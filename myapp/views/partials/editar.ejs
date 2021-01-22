@@ -1,35 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
     <body>
-        <div id="menu">
-            <nav>
-                <ul class="primer_tab">
-                    <a href="">Universidad</a>
-                </ul>
-                <ul class="segundo_tab">
-                    <a href="">Asignaturas</a>
-                </ul>
-                <ul class="tercer_tab">
-                    <a href="">Usuarios</a>
-                </ul>
-            </nav>
-        </div>
-
         <div id="Formulario">
             <form>
-                <p>Nombre: <input type="text" name="nombre" size="20"> &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                     Contraseña: <input type="text" name="contraseña" size="20"></p>
-                <br>
-                <p>Apellidos: <input type="text" name="apellidos" size="30"> &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                    <input type="checkbox" name="asig1" size="20"> Asignatura 1 </p>
-                <br>
-                <p>Rol: <input type="text" name="rol" size="20">  &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="asig2" size="20"> Asignatura 2 </p>
-                <br>
-                <p>Correo: <input type="text" name="correo" size="30"> &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="asig3" size="20"> Asignatura 3 </p>
-                <br><br>
-                <input type="submit" value="Añadir" size="40" style='width:90px; height:40px'>
+                <table align="center" class="tab">
+                    <tr>
+                        <td align="left">
+                            <label for="name">Nombre:</label>
+                            <input type="text" name="nombre" size="20">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" name="apellidos" size="20">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="asig1" size="20"> Asignatura 1
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="left">
+                            <label for="password">Contraseña:</label>
+                            <input type="text" name="contraseña" size="20">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="asig2" size="20"> Asignatura 2
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left">
+                            <label for="correo">Correo:</label>
+                            <input type="text" name="correo" size="20">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="asig3" size="20"> Asignatura 3
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left">
+                            <label for="rol">Rol:</label>
+                            <input type="text" name="rol" size="20">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td  align="center">
+                            <input type="submit" value="Añadir" size="40" style='width:90px; height:40px'>
+                        </td>
+                    </tr>
+                </table> 
             </form>
         </div>
     </body>
