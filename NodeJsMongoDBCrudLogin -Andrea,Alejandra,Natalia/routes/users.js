@@ -15,16 +15,20 @@ router.post('/signup', passport.authenticate('local-signup', {
   failureFlash: true
 })); 
 
-router.get('/_login', (req, res, next) => {
-  res.render('_login');
+router.get('/login', (req, res, next) => {
+  res.render('login');
 });
 
-router.get('/_asignaturas', (req, res, next) => {
-  res.render('_asignaturas');
+router.get('/asignaturas', (req, res, next) => {
+  res.render('asignaturas');
 });
 
 router.get('/editar', (req, res, next) => {
   res.render('editar');
+});
+
+router.get('/usuarios', (req, res, next) => {
+  res.render('usuarios');
 });
 
 
