@@ -5,7 +5,11 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   email:  { type: String, required: true },
-  password:  { type: String, required: true }
+  password:  { type: String, required: true },
+  name: { type: String, required: true },
+  apellidos: { type: String, required: true },
+  asignaturas: { type: Array, required: true },
+  rol: { type: String, required: true }
 });
 
 userSchema.methods.encryptPassword = (password) => {

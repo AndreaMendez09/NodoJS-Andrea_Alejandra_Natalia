@@ -11,8 +11,8 @@ const TaskSchema = Schema({
     type: String,
     required: true
 },
-  status: {
-    type: Boolean,
+  info_instalacion: {
+    type: String,
     default: false
   },
   usuario: [
