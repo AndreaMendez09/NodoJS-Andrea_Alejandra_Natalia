@@ -31,6 +31,10 @@ router.get('/usuarios', (req, res, next) => {
   res.render('usuarios');
 });
 
+router.get('/editar_usuarios', (req, res, next) => {
+  res.render('editar_usuarios');
+});
+
 
 router.post('/signin', passport.authenticate('local-signin', {
   successRedirect: '/profile',
