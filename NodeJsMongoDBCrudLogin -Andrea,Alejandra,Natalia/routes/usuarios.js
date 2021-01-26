@@ -1,30 +1,33 @@
 const router = require('express').Router();
 const passport = require('passport');
 /*Guardamos los datos*/
-const Usuario = require('../models/user');
+const Usuario = require('../models/usuarios');
 
 /* vamos al modelo de usuarios */
-router.get('/usuario', async (req, res, next) => {
+router.get('/usuarios', async (req, res, next) => {
   /**Guardamos en una varibale lo que encontramos en usuarios */
-  const usuario = await Usuario.find();
+  const usuarios = await Usuario.find();
   /*Imprimimos por consola para ver que los datos existen */
-  console.log(usuario);
+  console.log(usuarios);
   /*Devolvemos los datos a las vistas */
-  res.render('usuario', {
-    usuario
+  res.render('usuarios', {
+    usuarios
   });
 });
 
-router.post('/usuarios/add',async (req, res, next) => {
-  console.log(req.body);
-  /* Creamos un objeto de tipo asignaturas con el form*/ 
+router.post('/usuarios/add', passport.authenticate('local-signup', {
+  /*console.log(req.body);
+  // Creamos un objeto de tipo asignaturas con el form
   const usuario = new Usuario(req.body);
   console.log(usuario);
-  /*Guardamos el usuario */
+  //Guardamos el usuario 
   await usuario.save();
-  /*Devolvemos los datos a la vista*/
-  res.redirect('/usuario');
-});
+  //Devolvemos los datos a la vista
+  res.redirect('/usuario');*/
+  successRedirect: '/usuarios',
+  failureRedirect: '/usuarios',
+  failureFlash: true
+}));
 
 router.get('/', (req, res, next) => {
   console.log("hola User");

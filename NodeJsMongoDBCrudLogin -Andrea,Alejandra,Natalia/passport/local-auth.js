@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const User = require('../models/user');
+const User = require('../models/usuarios');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -22,7 +22,11 @@ passport.use('local-signup', new LocalStrategy({
     return done(null, false, req.flash('signupMessage', 'The Email is already Taken.'));
   } else {
     const newUser = new User();
-    newUser.email = email;
+    newUser.email = Req.body.email;
+    newUser.nombre = Req.body.nombre;
+    newUser.apllidos = Req.body.apellidos;
+    newUser.rol = Req.body.rol;
+    newUser.asignaturas = Req.body.asignaturas;
     newUser.password = newUser.encryptPassword(password);
     await newUser.save();
     done(null, newUser);
