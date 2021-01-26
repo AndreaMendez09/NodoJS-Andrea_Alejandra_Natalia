@@ -1,21 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const AsignaturaSchema = Schema({
+const TaskSchema = Schema({
   title: {
     type: String,
     required: true
-  },
+},
 
   description: {
     type: String,
     required: true
-  },
+},
   info_instalacion: {
     type: String,
-    required: true,
-    default: "buenas",
+    default: false
   },
+  usuario: [
+    {type: mongoose.Schema.Types.ObjectId, ref:'user'}
+]
 });
 
-module.exports = mongoose.model('asignaturas', AsignaturaSchema);
+module.exports = mongoose.model('tasks', TaskSchema);

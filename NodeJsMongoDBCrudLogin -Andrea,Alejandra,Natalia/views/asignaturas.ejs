@@ -5,11 +5,12 @@
   <!-- BOOTSTRAP CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+<div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="/add" method="post">
+          <form action="/asignaturas/add" method="post">
             <div class="form-group">
               <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura">
             </div>
@@ -19,19 +20,16 @@
                 ></textarea>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="info" cols="80"
+              <textarea class="form-control" name="info_instalacion" cols="80"
                 placeholder="Escribe la información de instalación"
                 ></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">
-              Añadir
-            </button>
+            <button class="btn btn-primary" type="submit">Añadir</button>
           </form>
         </div>
       </div>
     </div>
-
-    <div class="container">
+    
       <div class="col-md-10">
         <table class="table table-bordered table-hover">
           <thead>
@@ -43,9 +41,16 @@
             </tr>
           </thead>
           <tbody>
-            <% for(var i=0; i < 10; i++) { %>
+            <% for(var i=0; i < asignaturas.length; i++) { %>
               <tr>
                 <td><%= i + 1%></td>
+                <td><%= asignaturas[i].title%></td>
+                <td><%= asignaturas[i].description%></td>
+                <td><%= asignaturas[i].info_instalacion%></td>
+                <td>
+                  <a href="/delete/<%= asignaturas[i]._id %>" class="btn btn-danger">Delete</a>
+                  <a href="" class="btn btn-secondary">Edit</a>
+                </td>
               </tr>
             <% } %>
           </tbody>

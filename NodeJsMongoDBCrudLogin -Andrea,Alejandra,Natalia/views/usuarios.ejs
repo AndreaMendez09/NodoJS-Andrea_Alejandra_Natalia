@@ -5,11 +5,12 @@
   <!-- BOOTSTRAP CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+<div class="container">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
-                <form action="/add" method="post">
+                <form action="/usuarios/add" method="post">
                     <div class="form-group">
                     <input class="form-control" type="text" name="nombre" placeholder="Nombre">
                     </div>
@@ -23,18 +24,19 @@
                         <input class="form-control" type="text" name="password" placeholder="Contraseña">
                     </div>
                     <div>
-                        <select name="Rol">
+                        <select name="rol">
                         <option>Administrador</option> 
                         <option>Profesor</option> 
                         <option>Alumno</option>
                         </select>
                     </div>
+                    
                     <button class="btn btn-primary" type="submit">Añadir</button>
-                  </form>
+                </form>
                 </div>
             </div>
             </div>
-    <div class="container">
+    
       <div class="col-md-10">
         <table class="table table-bordered table-hover">
           <thead>
@@ -48,9 +50,17 @@
             </tr>
           </thead>
           <tbody>
-            <% for(var i=0; i < 10; i++) { %>
+            <% for(var i=0; i < user.length; i++) { %>
               <tr>
                 <td><%= i + 1%></td>
+                <td><%= user[i].nombre%></td>
+                <td><%= user[i].apellidos%></td>
+                <td><%= user[i].correo%></td>
+                <td><%= user[i].rol%></td>
+                <td>
+                  <a href="" class="btn btn-danger">Delete</a>
+                  <a href="" class="btn btn-secondary">Edit</a>
+                </td>
               </tr>
             <% } %>
           </tbody>

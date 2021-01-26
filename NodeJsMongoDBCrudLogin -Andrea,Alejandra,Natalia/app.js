@@ -15,6 +15,7 @@ require('./passport/local-auth');
 
 
 var tasksRouter = require('./routes/tasks');
+var asignaturasRouter = require('./routes/asignaturas');
 var usersRouter = require('./routes/users');
 // view engine setup
 app.set('port', process.env.PORT || 3000);
@@ -46,7 +47,9 @@ app.use((req, res, next) => {
 });
 
 //routes
+asignaturasRouter
 app.use('/', usersRouter);
+app.use('/', asignaturasRouter);
 app.use('/', tasksRouter);
 
 // catch 404 and forward to error handler
