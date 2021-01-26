@@ -1,4 +1,5 @@
 const express = require('express');
+const asignaturas = require('../models/asignaturas');
 const router = express.Router();
 /*Aca guardamos los datos*/ 
 const Asignatura = require('../models/asignaturas');
@@ -26,7 +27,7 @@ router.post('/asignaturas/add',async (req, res, next) => {
   res.redirect('/asignaturas');
 });
 
-router.get('/asignaturas/delete/:id', isAuthenticated,async (req, res, next) => {
+router.get('/asignaturas/delete/:id',async (req, res, next) => {
   let { id } = req.params;
   await Asignatura.remove({_id: id});
   res.redirect('/asignaturas');

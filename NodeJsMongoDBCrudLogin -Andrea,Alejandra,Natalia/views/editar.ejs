@@ -1,82 +1,32 @@
 <% include partials/_header %>
-<style>
-    body {font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;}
-
-.editar{
-    width: 600px;
-    height: 700px;
-    background: rgb(255, 255, 255);
-    position: absolute;
-    box-sizing: border-box;
-    padding: 70px 30px;
-}
-.editar li{
-    padding:12px; 
-    border-bottom:1px solid  rgb(255, 255, 255);;
-    position:relative;
-}
-.editar textarea {padding:8px; width:300px;}
-.editar button {margin-left:156px;}
-button.submit {
-    background-color: #68b12f;
-    background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
-    background: -webkit-linear-gradient(top, #68b12f, #50911e);
-    background: -moz-linear-gradient(top, #68b12f, #1d2913);
-    background: -ms-linear-gradient(top, #68b12f, #50911e);
-    background: -o-linear-gradient(top, #68b12f, #50911e);
-    background: linear-gradient(top, #68b12f, #50911e);
-    border: 1px solid #509111;
-    border-bottom: 1px solid #5b992b;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    box-shadow: inset 0 1px 0 0 #9fd574;
-    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
-    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
-    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
-    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
-    color: white;
-    font-weight: bold;
-    padding: 6px 20px;
-    text-align: center;
-    text-shadow: 0 -1px 0 #396715;
-}
-button.submit:hover {
-    opacity:.85;
-    cursor: pointer; 
-}
-button.submit:active {
-    border: 1px solid #20911e;
-    box-shadow: 0 0 10px 5px #356b0b inset; 
-    -webkit-box-shadow:0 0 10px 5px #356b0b inset ;
-    -moz-box-shadow: 0 0 10px 5px #356b0b inset;
-    -ms-box-shadow: 0 0 10px 5px #356b0b inset;
-    -o-box-shadow: 0 0 10px 5px #356b0b inset;
-     
-}
-</style>
-   
-<form class="editar" method="POST">
-   
-        <div id="Editar">
-            <li>
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombretxt" />
-              
-            </li>
-            <li>
-                <label for="descripcion">Descripcion:</label>
-                <textarea name="descriptxt" cols="40" rows="6" >
-            </li>
-            <li>
-                <label for="info">Descripcion:</label>
-                <textarea name="infotxt" cols="40" rows="6" >
-            </li>
-            <li>
-                <button class="btneditar" type="submit">Editar</button>
-            </li> 
+<head>
+  <meta charset="utf-8">
+  <title>Asignaturas</title>
+  <!-- BOOTSTRAP CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <form action="/asignaturas/add" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="description" cols="80"
+                placeholder="Escribe la descripción de la asignatura"
+                ></textarea>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="info_instalacion" cols="80"
+                placeholder="Escribe la información de instalación"
+                ></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Añadir</button>
+          </form>
         </div>
-</form>
- <% include partials/_footer %>
+      </div>
+    </div>
+  </div>
