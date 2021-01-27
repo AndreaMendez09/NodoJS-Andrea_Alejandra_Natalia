@@ -21,8 +21,7 @@ const userSchema = new Schema({
     required: true 
   },
   asignaturas: { 
-    type: Array, 
-    required: true 
+    type: Array
   },
   rol: { 
     type: String, 

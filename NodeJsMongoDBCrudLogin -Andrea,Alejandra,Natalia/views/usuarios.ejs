@@ -30,7 +30,12 @@
                         <option>Alumno</option>
                         </select>
                     </div>
-                    
+                    <div class="form-group">
+                      <%for (var i=0; i < asignaturas.length;i++){%>
+                      <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>"><label for="asignaturas"><%=asignaturas[i].title%></label>
+               
+                  <% } %>
+                </div>
                     <button class="btn btn-primary" type="submit">Añadir</button>
                 </form>
                 </div>
@@ -47,6 +52,8 @@
               <th>Correo</th>
               <th>Rol</th>
               <th>Asignaturas</th>
+              <th>Operaciones</th>
+
             </tr>
           </thead>
           <tbody>
@@ -57,6 +64,16 @@
                 <td><%= usuarios[i].apellidos%></td>
                 <td><%= usuarios[i].correo%></td>
                 <td><%= usuarios[i].rol%></td>
+                <td>
+                  <%for (var j=0; j < usuarios[i].asignaturas.length;j++){%>
+                    <%for (var k=0;k < asignaturas.length;k++){%>
+
+                    <%if(asignaturas[k]._id.toString()==usuarios[i].asignaturas[j].toString()){%>
+                    <%= asignaturas[k].title%>
+                    <% } %>
+                    <% } %>
+                <% } %>
+                </td>
                 <td>
                   <a href="" class="btn btn-danger">Delete</a>
                   <a href="" class="btn btn-secondary">Edit</a>

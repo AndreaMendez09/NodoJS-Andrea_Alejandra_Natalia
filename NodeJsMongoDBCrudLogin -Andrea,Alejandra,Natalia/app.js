@@ -13,8 +13,6 @@ var app = express();
 require('./database');
 require('./passport/local-auth');
 
-
-var tasksRouter = require('./routes/tasks');
 var asignaturasRouter = require('./routes/asignaturas');
 var usersRouter = require('./routes/usuarios');
 // view engine setup
@@ -50,7 +48,7 @@ app.use((req, res, next) => {
 asignaturasRouter
 app.use('/', usersRouter);
 app.use('/', asignaturasRouter);
-app.use('/', tasksRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

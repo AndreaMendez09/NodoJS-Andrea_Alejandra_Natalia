@@ -1,7 +1,7 @@
 <% include partials/_header %>
 <head>
   <meta charset="utf-8">
-  <title>Asignaturas</title>
+  <title>Editar asignaturas</title>
   <!-- BOOTSTRAP CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
@@ -10,7 +10,7 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="/asignaturas/add" method="post">
+          <form action="/asignaturas/editar_asignaturas/<%= asignaturas[i]._id %>" method="post">
             <div class="form-group">
               <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura">
             </div>
@@ -24,7 +24,7 @@
                 placeholder="Escribe la información de instalación"
                 ></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">Añadir</button>
+            <button class="btn btn-primary" type="submit">Editar</button>
           </form>
         </div>
       </div>

@@ -13,32 +13,32 @@ passport.deserializeUser(async (id, done) => {
 });
 
 passport.use('local-signup', new LocalStrategy({
-  usernameField: 'email',
+  usernameField: 'correo',
   passwordField: 'password',
   passReqToCallback: true
-}, async (req, email, password, done) => {
-  const user = await User.findOne({'email': email})
+}, async (req, correo, password, done) => {
+  const user = await User.findOne({'correo': correo})
   if(user) {
     return done(null, false, req.flash('signupMessage', 'The Email is already Taken.'));
   } else {
     const newUser = new User();
-    newUser.email = Req.body.email;
-    newUser.nombre = Req.body.nombre;
-    newUser.apllidos = Req.body.apellidos;
-    newUser.rol = Req.body.rol;
-    newUser.asignaturas = Req.body.asignaturas;
+    newUser.correo = correo;
+    newUser.nombre = req.body.nombre;
+    newUser.apellidos = req.body.apellidos;
+    newUser.rol = req.body.rol;
+    newUser.asignaturas = req.body.asignaturas;
     newUser.password = newUser.encryptPassword(password);
     await newUser.save();
-    done(null, newUser);
+    done(null, req.user);
   }
 }));
 
 passport.use('local-signin', new LocalStrategy({
-  usernameField: 'email',
+  usernameField: 'correo',
   passwordField: 'password',
   passReqToCallback: true
-}, async (req, email, password, done) => {
-  const user = await User.findOne({email: email});
+}, async (req, correo, password, done) => {
+  const user = await User.findOne({correo: correo});
   if(!user) {
     return done(null, false, req.flash('signinMessage', 'No User Found'));
   }
