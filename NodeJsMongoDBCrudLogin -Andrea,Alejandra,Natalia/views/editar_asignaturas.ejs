@@ -10,19 +10,19 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="/asignaturas/editar_asignaturas/<%= asignaturas[i]._id %>" method="post">
+          <form action="/asignaturas/editar_asignaturas/<%= asignaturas._id %>" method="post">
             <div class="form-group">
-              <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura">
+              <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura" value="<%= asignaturas.title %>">
             </div>
             <div class="form-group">
               <textarea class="form-control" name="description" cols="80"
                 placeholder="Escribe la descripción de la asignatura"
-                ></textarea>
+                ><%= asignaturas.description %></textarea>
             </div>
             <div class="form-group">
               <textarea class="form-control" name="info_instalacion" cols="80"
                 placeholder="Escribe la información de instalación"
-                ></textarea>
+                ><%= asignaturas.info_instalacion %></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Editar</button>
           </form>
