@@ -33,6 +33,18 @@ router.get('/usuarios/delete/:id',async (req, res, next) => {
   res.redirect('/usuarios');
 });
 
+router.get('/usuarios/editar_usuarios/:id', async (req, res, next) => {
+  const usuarios = await Usuario.findById(req.params.id);
+  console.log(usuarios);
+  res.render('editar_usuarios', { usuarios });
+});
+
+router.post('/usuarios/editar_usuarios/:id', async (req, res, next) => {
+  const { id } = req.params;
+  await Usuario.update({_id: id}, req.body);
+  res.redirect('/usuarios');
+});
+
 router.get('/', (req, res, next) => {
   console.log("hola User");
 
@@ -53,10 +65,6 @@ router.get('/login', (req, res, next) => {
   res.render('login');
 });
 
-
-router.get('/editar', (req, res, next) => {
-  res.render('editar');
-});
 
 router.get('/usuarios', (req, res, next) => {
   res.render('usuarios');
