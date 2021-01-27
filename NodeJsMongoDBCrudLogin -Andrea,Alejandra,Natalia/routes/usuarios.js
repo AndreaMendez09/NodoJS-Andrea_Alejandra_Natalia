@@ -27,6 +27,12 @@ router.post('/usuarios/add',passport.authenticate('local-signup', {
 
 }));
 
+router.get('/usuarios/delete/:id',async (req, res, next) => {
+  let { id } = req.params;
+  await Usuario.remove({_id: id});
+  res.redirect('/usuarios');
+});
+
 router.get('/', (req, res, next) => {
   console.log("hola User");
 
