@@ -96,17 +96,19 @@
 </style>
     <div class="login">
         <h1>Login</h1>
-        <form action="">
+        <form action="/" method="POST">            
          
           <label for="username">Usuario</label>
-          <input type="text" placeholder="Introduzca Usuario">
+          <input type="text" name="correo" placeholder="Introduzca Usuario">
           
           <label for="password">Password</label>
-          <input type="password" placeholder="Introduzca Password">
-          <input type="submit" value="Entrar">
-          
+          <input type="password" name="password" placeholder="Introduzca Password">
+          <button type="submit">
+            SignIn
+          </button>          
         </form>
-    </div>
-<% include partials/_footer %>
-
-
+      </div>
+      <%if (signinMessage) {%>
+        <p style="color:#FF0000;"><%= signinMessage %></p>
+      <% } %>
+      <% include partials/_footer %>
