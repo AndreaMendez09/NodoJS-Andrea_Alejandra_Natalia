@@ -8,8 +8,12 @@
             <nav>
                 <ul class="primer_tab">
                     <li><a href="/">Universidad</a></li>
+                    <%if(user){%>
                     <li><a href="/asignaturas">Asignaturas</a></li>
-                    <li><a href="/usuarios">Usuarios</a></li>
+                      <%if(user.rol == "Administrador"){%>
+                      <li><a href="/usuarios">Usuarios</a></li>
+                      <%}%>
+                    <%}%>
                 </ul>
             </nav>
         </div>
@@ -25,6 +29,7 @@ body {
     position: relative;
     text-align: left;
     text-transform: uppercase;
+    margin: 0px;
   }
   
   ul.primer_tab li {

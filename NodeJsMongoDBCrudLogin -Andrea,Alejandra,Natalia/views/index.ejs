@@ -37,12 +37,12 @@
     display: block;
   }
   
-  .login-box input {
+  .input {
     width: 100%;
     margin-bottom: 20px;
   }
   
-  .login-box input[type="text"], .login-box input[type="password"] {
+  .input {
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -52,63 +52,39 @@
     font-size: 16px;
   }
   
-  .login-box input[type="submit"] {
+  .boton {
     border: none;
     outline: none;
     height: 40px;
     background: #000000;
     color: #fff;
     font-size: 18px;
+    width: 100%;
     border-radius: 20px;
   }
   
-  .login-box input[type="submit"]:hover {
+  .boton:hover {
     cursor: pointer;
     background: #ffc107;
     color: #000;
   }
-  
-  .login-box a {
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 20px;
-    color: darkgrey;
-  }
-  
-  .login-box a:hover {
-    color: #fff;
-  }
-  .mapa{
-    width: 320px;
-    height: 420px;
-    top: 30%;
-    left: 10%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
 
-  }
-  .mapa h1{
-    color: rgb(88, 184, 25);
-
-  }
+  
 </style>
     <div class="login">
         <h1>Login</h1>
         <form action="/" method="POST">            
          
           <label for="username">Usuario</label>
-          <input type="text" name="correo" placeholder="Introduzca Usuario">
+          <input type="text" name="correo" placeholder="Introduzca Usuario" class="input">
           
           <label for="password">Password</label>
-          <input type="password" name="password" placeholder="Introduzca Password">
-          <button type="submit">
-            SignIn
-          </button>          
+          <input type="password" name="password" placeholder="Introduzca Password" class="input">
+          <button type="submit" class="boton">Entrar</button>          
         </form>
+        <%if (signinMessage) {%>
+          <p style="color:#FF0000;" class="error"><%= signinMessage %></p>
+        <% } %>
       </div>
-      <%if (signinMessage) {%>
-        <p style="color:#FF0000;"><%= signinMessage %></p>
-      <% } %>
+
       <% include partials/_footer %>

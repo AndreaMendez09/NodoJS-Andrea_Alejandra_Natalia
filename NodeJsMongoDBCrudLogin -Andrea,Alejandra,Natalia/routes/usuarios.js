@@ -46,12 +46,10 @@ router.post('/usuarios/editar_usuarios/:id', async (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  console.log("hola User");
-
   res.render('index');
 });
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup',isAuthenticated ,(req, res, next) => {
   res.render('signup');
 });
 
@@ -64,6 +62,16 @@ router.post('/signup', passport.authenticate('local-signup', {
 router.get('/login', (req, res, next) => {
   res.render('login');
 });
+
+router.get('/', (req, res, next) => {
+  res.render('index');
+});
+
+router.post('/', passport.authenticate('local-signin', {
+  successRedirect: '/asignaturas',
+  failureRedirect: '/',
+  failureFlash: true
+}));
 
 
 router.get('/usuarios', (req, res, next) => {

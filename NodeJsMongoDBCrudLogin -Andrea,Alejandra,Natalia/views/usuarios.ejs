@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+<%if(user.rol == "Administrador"){%>
 <div class="container">
   <div class="row">
     <div class="col-md-10">
@@ -34,8 +35,8 @@
             </div>
             <div class="form-group">
               <%for (var i=0; i < asignaturas.length;i++){%>
-              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>"><label
-                for="asignaturas"><%=asignaturas[i].title%></label>
+              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
+              <label for="asignaturas"><%=asignaturas[i].title%></label>
 
               <% } %>
             </div>
@@ -45,7 +46,7 @@
       </div>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-15">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -89,4 +90,5 @@
     </div>
   </div>
 </div>
+<%}%>
 <% include partials/_footer %>
