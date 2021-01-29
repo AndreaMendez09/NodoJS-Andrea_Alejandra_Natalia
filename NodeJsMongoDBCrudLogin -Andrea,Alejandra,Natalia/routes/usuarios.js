@@ -83,6 +83,11 @@ router.get('/usuarios', (req, res, next) => {
   res.render('usuarios');
 });
 
+router.get('/info_usuarios', (req, res, next) => {
+  res.render('info_usuarios');
+});
+
+
 
 router.post('/signin', passport.authenticate('local-signin', {
   successRedirect: '/profile',

@@ -15,7 +15,12 @@
                       <%if(user.rol == "Administrador"){%>
                       <li><a href="/usuarios">Usuarios</a></li>
                       <%}%>
+                    <div class="derecha">
+                      <%if(user){%>
+                      <li><a href="/info_usuarios">Mi usuario</a></li>
+                      <%}%>
                       <li><a href="/">Cerrar sesion</a></li>
+                    </div>
                     <%}%>
                 </ul>
             </nav>
@@ -32,6 +37,10 @@
   
   ul.primer_tab li {
     float: left;
+  }
+
+  .derecha {
+    float: right;
   }
   
   /* clear float */

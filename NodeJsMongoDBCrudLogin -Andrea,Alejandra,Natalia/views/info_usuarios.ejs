@@ -1,0 +1,26 @@
+<% include partials/_header %>
+
+<head>
+    <meta charset="utf-8">
+    <title>Mi perfil</title>
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+
+<h1>Mi informacion personal:</h1>
+
+<div class="container">
+    <p>Nombre: <%= user.nombre %></p>
+    <p>Apellidos: <%= user.apellidos %></p>
+    <p>Rol: <%= user.rol %></p>
+    <p>Correo: <%= user.correo %></p>
+    <p>Mis asignaturas:</p>
+    <!--<%//for (var i=0; i < asignaturas.length;i++){%>
+    <p><%=//asignaturas[i].title%></p>
+    <% //} %>-->
+
+</div>
+
+
+<% include partials/_footer %>
