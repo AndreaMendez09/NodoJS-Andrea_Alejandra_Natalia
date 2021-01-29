@@ -7,25 +7,46 @@
 </head>
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-15">
             <div class="card">
                 <div class="card-body">
-                    <form action="/usuarios/editar_usuarios/<%= usuarios._id %>" method="post">
+                    <form action="/usuarios/editar_usuarios/<%= usuario._id %>" method="post">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="nombre" placeholder="Nombre" value="<%= usuarios.nombre %>">
+                            <input class="form-control" type="text" name="nombre" placeholder="Nombre" value="<%= usuario.nombre %>">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="apellidos" placeholder="Apellidos" value="<%= usuarios.apellidos %>">
+                            <input class="form-control" type="text" name="apellidos" placeholder="Apellidos" value="<%= usuario.apellidos %>">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="correo" placeholder="Correo" value="<%= usuarios.correo %>">
+                            <input class="form-control" type="text" name="correo" placeholder="Correo" value="<%= usuario.correo %>">
                         </div>
                         <div>
+                            <label>Rol: </label>
                             <select name="rol">
                                 <option>Administrador</option>
                                 <option>Profesor</option>
                                 <option>Alumno</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <%for (var i=0; i < asignaturas.length;i++){%>
+                                <%var encontrada=false;%>
+                                <%for( var j=0;j < usuario.asignaturas.length;j++){%>
+                                <%if(asignaturas[i]._id.toString()==usuario.asignaturas[j].toString()){%>
+                                    <% encontrada=true;%>
+
+                                <%}%>
+
+                            <% } %>
+
+                            <%if(encontrada==true){%>
+                                <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>" checked><label
+                                for="asignaturas"><%=asignaturas[i].title%></label>
+                            <%}else{%>
+                                <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>"><label
+                                for="asignaturas"><%=asignaturas[i].title%></label>
+                            <%}%>
+                            <% } %>
                         </div>
                         <button class="btn btn-primary" type="submit">Añadir</button>
                     </form>
