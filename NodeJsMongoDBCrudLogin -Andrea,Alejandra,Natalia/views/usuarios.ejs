@@ -81,7 +81,7 @@
               <% } %>
             </td>
             <td>
-              <a href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
+              <a id="eliminar" onclick="pop_up()" href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
               <a href="/usuarios/editar_usuarios/<%= usuarios[i]._id %>" class="btn btn-secondary">Edit</a>
             </td>
           </tr>
@@ -92,5 +92,15 @@
     </div>
   </div>
 </div>
+<script>
+  function pop_up() {
+    var elemento = document.getElementById("eliminar");
+    if (confirm("¿Estas seguro de que quieres eliminar?")) {
+      var hola;
+    } else {
+      elemento.setAttribute("href","/usuarios");
+    }
+  }
+</script>
 <%}%>
 <% include partials/_footer %>
