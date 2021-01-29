@@ -85,6 +85,9 @@
         <%if (signinMessage) {%>
           <p style="color:#FF0000;" class="error"><%= signinMessage %></p>
         <% } %>
+        <%if (signupMessage) {%>
+          <p style="color:#FF0000;"><%= signupMessage %></p>
+        <% } %>
       </div>
 
       <% include partials/_footer %>
