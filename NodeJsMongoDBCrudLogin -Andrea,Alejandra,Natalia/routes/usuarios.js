@@ -78,6 +78,10 @@ router.get('/usuarios', (req, res, next) => {
   res.render('usuarios');
 });
 
+router.get('/software', (req, res, next) => {
+  res.render('software');
+});
+
 
 router.post('/signin', passport.authenticate('local-signin', {
   successRedirect: '/profile',
