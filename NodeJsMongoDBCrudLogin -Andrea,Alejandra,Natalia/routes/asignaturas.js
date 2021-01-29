@@ -45,42 +45,6 @@ router.post('/asignaturas/editar_asignaturas/:id', async (req, res, next) => {
   res.redirect('/asignaturas');
 });
 
-router.get('/tasks/turn/:id',isAuthenticated, async (req, res, next) => {
-  let { id } = req.params;
-  const task = await Task.findById(id);
-  task.status = !task.status;
-  await task.save();
-  res.redirect('/tasks');
-});
-
-
-router.get('/tasks/edit/:id', isAuthenticated, async (req, res, next) => {
-  const task = await Task.findById(req.params.id);
-  console.log(task);
-  res.render('edit', { task });
-});
-
-router.post('/tasks/edit/:id',isAuthenticated, async (req, res, next) => {
-  const { id } = req.params;
-  await Task.update({_id: id}, req.body);
-  res.redirect('/tasks');
-});
-
-router.get('/tasks/delete/:id', isAuthenticated,async (req, res, next) => {
-  let { id } = req.params;
-  await Task.remove({_id: id});
-  res.redirect('/tasks');
-});
-
-router.get('/tasks/search',isAuthenticated, async (req, res, next) => {
-  let search = req.query.search;
-  console.log(search);
-  const tasks = await Task.find({'title' : new RegExp(search, 'i'),'usuario': req.user._id});
-  res.render('tasks', {
-    tasks
-  });
-});
-
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
     return next();
