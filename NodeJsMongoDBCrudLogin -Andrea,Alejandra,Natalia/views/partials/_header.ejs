@@ -6,16 +6,27 @@
     <body>
         <div id="menu">
             <nav>
+<<<<<<< Updated upstream
                 <ul class="primer_tab">
                   <%if(!(user)){%>
                     <li><a href="/">Universidad</a></li>
+=======
+                <ul class="primer_tab">  
+                  <%if(!(user)){%>
+                      <li><a href="/">Universidad</a></li>
+>>>>>>> Stashed changes
                     <%}%>
                     <%if(user){%>
                     <li><a href="/asignaturas">Asignaturas</a></li>
                       <%if(user.rol == "Administrador"){%>
                       <li><a href="/usuarios">Usuarios</a></li>
+<<<<<<< Updated upstream
                       <%}%> 
                     <li><a href="/logout">Cerrar sesion</a></li>
+=======
+                      <%}%>
+                      <li><a href="/">Cerrar sesion</a></li>
+>>>>>>> Stashed changes
                     <%}%>
                 </ul>
             </nav>

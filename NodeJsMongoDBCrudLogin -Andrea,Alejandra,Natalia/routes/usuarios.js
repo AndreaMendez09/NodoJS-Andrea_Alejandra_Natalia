@@ -34,9 +34,10 @@ router.get('/usuarios/delete/:id',async (req, res, next) => {
 });
 
 router.get('/usuarios/editar_usuarios/:id', async (req, res, next) => {
-  const usuarios = await Usuario.findById(req.params.id);
-  console.log(usuarios);
-  res.render('editar_usuarios', { usuarios });
+  const asignaturas = await Asignatura.find();
+  const usuario = await Usuario.findById(req.params.id);
+  console.log(usuario);
+  res.render('editar_usuarios', { usuario,asignaturas });
 });
 
 router.post('/usuarios/editar_usuarios/:id', async (req, res, next) => {

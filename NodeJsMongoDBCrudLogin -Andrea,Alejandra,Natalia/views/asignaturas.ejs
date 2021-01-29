@@ -52,7 +52,7 @@
               <%for (var j=0; j < user.asignaturas.length;j++){%>
                 <%if(asignaturas[i]._id.toString()==user.asignaturas[j].toString() || user.rol == "Administrador"){%>              
               <tr>
-                <td><%= j + 1%></td>
+                <td href="/software"><%= j + 1%></td>
                 <td><%= asignaturas[i].title%></td>
                 <td><%= asignaturas[i].description%></td>
                 <td><%= asignaturas[i].info_instalacion%></td>
