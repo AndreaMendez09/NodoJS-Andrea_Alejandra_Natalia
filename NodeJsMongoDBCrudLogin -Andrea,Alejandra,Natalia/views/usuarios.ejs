@@ -1,0 +1,96 @@
+<% include partials/_header %>
+
+<head>
+  <meta charset="utf-8">
+  <title>Usuarios</title>
+  <!-- BOOTSTRAP CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<%if(user.rol == "Administrador"){%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <form action="/usuarios/add" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="apellidos" placeholder="Apellidos">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="correo" placeholder="Correo">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="password" placeholder="Contraseña">
+            </div>
+            <div>
+              <select name="rol">
+                <option>Administrador</option>
+                <option>Profesor</option>
+                <option>Alumno</option>
+              </select>
+            </div>
+            <br>
+            <div class="form-group">
+              <%for (var i=0; i < asignaturas.length;i++){%>
+              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
+              <label for="asignaturas"><%=asignaturas[i].title%></label>
+              <% } %>
+            </div>
+            <button class="btn btn-primary" type="submit">Añadir</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+
+    <div class="col-md-15">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Asignaturas</th>
+            <th>Operaciones</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < usuarios.length; i++) { %>
+          <tr>
+            <td><%= i + 1%></td>
+            <td><%= usuarios[i].nombre%></td>
+            <td><%= usuarios[i].apellidos%></td>
+            <td><%= usuarios[i].correo%></td>
+            <td><%= usuarios[i].rol%></td>
+            <td>
+              <%for (var j=0; j < usuarios[i].asignaturas.length;j++){%>
+              <%for (var k=0;k < asignaturas.length;k++){%>
+
+              <%if(asignaturas[k]._id.toString()==usuarios[i].asignaturas[j].toString()){%>
+              <%= asignaturas[k].title%>
+              <% } %>
+              <% } %>
+              <% } %>
+            </td>
+            <td>
+              <a href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
+              <a href="/usuarios/editar_usuarios/<%= usuarios[i]._id %>" class="btn btn-secondary">Edit</a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+<%}%>
+<% include partials/_footer %>
