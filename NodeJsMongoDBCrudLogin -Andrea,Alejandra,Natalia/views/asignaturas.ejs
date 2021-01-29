@@ -51,10 +51,12 @@
             <% var p = 1; %>
             <% for(var i=0; i < asignaturas.length; i++) { %>
               <%for (var j=0; j < user.asignaturas.length;j++){%>
-                <%if(asignaturas[i]._id.toString()==user.asignaturas[j].toString() || user.rol == "Administrador"){ %>           
+                <%if(asignaturas[i]._id.toString()==user.asignaturas[j].toString() || user.rol == "Administrador"){%>              
               <tr>
-                <td href="/software"><%= p++ %></td>
-                <td><%= asignaturas[i].title%></td>
+                <td ><%= p++ %></td>
+                <td>
+                <a href="/software/<%= asignaturas[i]._id %>"><%= asignaturas[i].title%></a>
+              </td>
                 <td><%= asignaturas[i].description%></td>
                 <td><%= asignaturas[i].info_instalacion%></td>
 

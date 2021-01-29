@@ -6,26 +6,21 @@
     <body>
         <div id="menu">
             <nav>
-                <ul class="primer_tab">
+                <ul class="primer_tab">  
                   <%if(!(user)){%>
-                    <li><a href="/">Universidad</a></li>
+                      <li><a href="/">Universidad</a></li>
                     <%}%>
                     <%if(user){%>
                     <li><a href="/asignaturas">Asignaturas</a></li>
                       <%if(user.rol == "Administrador"){%>
                       <li><a href="/usuarios">Usuarios</a></li>
-                      <%}%> 
-                    <li><a href="/logout">Cerrar sesion</a></li>
+                      <%}%>
+                      <li><a href="/">Cerrar sesion</a></li>
                     <%}%>
                 </ul>
             </nav>
         </div>
 <style>
-body { 
-    font-family:arial;
-    font-size: 15px;
-    background-color: #ccc;
-  }
   
   ul {
     list-style: none;

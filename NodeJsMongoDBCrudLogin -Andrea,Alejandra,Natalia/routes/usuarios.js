@@ -68,6 +68,10 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+router.get('/software', (req, res, next) => {
+  res.render('software');
+});
+
 router.post('/', passport.authenticate('local-signin', {
   successRedirect: '/asignaturas',
   failureRedirect: '/',
