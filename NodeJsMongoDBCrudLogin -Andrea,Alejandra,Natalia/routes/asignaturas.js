@@ -81,7 +81,6 @@ router.get('/tasks/search',isAuthenticated, async (req, res, next) => {
   });
 });
 
-
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
     return next();

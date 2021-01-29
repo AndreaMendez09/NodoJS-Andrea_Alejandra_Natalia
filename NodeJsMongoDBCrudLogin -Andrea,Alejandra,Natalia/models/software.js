@@ -9,7 +9,10 @@ const SoftwareSchema = Schema ({
     url: {
         type: String,
         required: true
-    }
+    },
+    asignatura: [
+      {type: mongoose.Schema.Types.ObjectId, ref:'asignaturas'}
+  ]
 });
 
 module.exports = mongoose.model('software', SoftwareSchema);
