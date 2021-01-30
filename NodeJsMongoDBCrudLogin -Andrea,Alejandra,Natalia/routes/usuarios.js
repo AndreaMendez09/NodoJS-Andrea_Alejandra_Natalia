@@ -40,11 +40,14 @@ router.get('/usuarios/editar_usuarios/:id',isAuthenticated, async (req, res, nex
   res.render('editar_usuarios', { usuario,asignaturas });
 });
 
+
 router.post('/usuarios/editar_usuarios/:id', isAuthenticated,async (req, res, next) => {
   const { id } = req.params;
   await Usuario.update({_id: id}, req.body);
   res.redirect('/usuarios');
 });
+
+
 
 router.get('/', (req, res, next) => {
   res.render('index');
