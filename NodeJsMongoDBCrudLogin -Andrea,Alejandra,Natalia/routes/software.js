@@ -8,14 +8,16 @@ const Software = require('../models/software');
 router.get('/software/:id', isAuthenticated, async (req, res, next) => {
   const software = await Software.find({asignatura:req.params.id});
   console.log(software);
-  res.render('software', { software });
+  res.render('software', { 
+    software 
+  });
 });
 
 
-router.post('/software/add',async (req, res, next) => {
-  console.log(req.body);
-  /* Creamos un objeto de tipo asignaturas con el form*/ 
-  const software = new software(req.body);
+router.post('/software/add',isAuthenticated,async (req, res, next) => {
+  /* Creamos un objeto de tipo software con el form*/ 
+  const software = new Software(req.body);
+  software.asignaturas=req.asignaturas.id;
   console.log(software);
   /*Guardamos el usuario */
   await software.save();

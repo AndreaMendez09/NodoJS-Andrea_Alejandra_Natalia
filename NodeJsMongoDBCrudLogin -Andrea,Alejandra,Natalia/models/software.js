@@ -10,8 +10,11 @@ const SoftwareSchema = Schema ({
         type: String,
         required: true
     },
-    asignatura: [
-      {type: mongoose.Schema.Types.ObjectId, ref:'asignaturas'}
+    asignaturas: [
+    {
+          type: mongoose.Schema.Types.ObjectId, 
+          ref:'asignaturas'
+    }
   ]
 });
 

@@ -68,6 +68,11 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/');
+});
+
 router.get('/software', (req, res, next) => {
   res.render('software');
 });
