@@ -20,15 +20,15 @@ const userSchema = new Schema({
     type: String, 
     required: true 
   },
+  imagen_perfil: {
+    type: String, 
+  },
   asignaturas: { 
     type: Array
   },
   rol: { 
     type: String, 
     required: true 
-  },
-  imagen: {
-    type: String, 
   }
 });
 
