@@ -7,24 +7,39 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
+</div>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+         
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Mi informacion personal:</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" readonly="readonly" class="form-control" value="<%= user.nombre %>"></div> 
+                    <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" readonly="readonly" class="form-control" value="<%= user.apellidos %>"></div><p></p>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">ROL</label><input type="text"  readonly="readonly" class="form-control" value="<%= user.rol %>"></div><p> </p>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text" readonly="readonly" class="form-control" value="<%= user.correo %>"></div><p></p>
 
-<h1>Mi informacion personal:</h1>
+                </div>
+                
 
-<div class="container">
-    <label class="etiquetas">Nombre:</label> <p><%= user.nombre %></p>
-    <p>Apellidos: <%= user.apellidos %></p>
-    <p>Rol: <%= user.rol %></p>
-    <p>Correo: <%= user.correo %></p>
-    <p>Mis asignaturas:</p>
-
-
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"> Editar Informacion</button></div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+</div>
 </div>
 
 <style>
-
-    .etiquetas {
-    
-    }
 
 </style>
 
