@@ -26,6 +26,9 @@ const userSchema = new Schema({
   rol: { 
     type: String, 
     required: true 
+  },
+  imagen: {
+    type: String, 
   }
 });
 
