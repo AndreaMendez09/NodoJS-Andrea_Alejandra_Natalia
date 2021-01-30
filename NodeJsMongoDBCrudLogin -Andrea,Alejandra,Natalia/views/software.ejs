@@ -8,6 +8,7 @@
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <div class="container">
+  <%if(user.rol == "Administrador"){%>
   <div class="row">
     <div class="col-md-10">
       <div class="card">
@@ -29,6 +30,7 @@
       <br>
     </div>
   </div>
+  <% } %>
 
 <div class="col-md-15">
   <table class="table table-bordered table-hover">
@@ -40,10 +42,12 @@
     </thead>
     <tbody>
       <% for(var i=0; i < software.length; i++) { %>
-        <%if(asignaturas._id.toString()==software.asignatura.toString()){%>              
+        <tr>
+        <%if(asignaturas._id.toString()==software.asignaturas.toString()){%>              
             <td><%= i + 1%></td>
             <td><%=software[i].url%></td>
         <% } %>
+      </tr>
     <% } %>  
     </tbody>
   </table>
