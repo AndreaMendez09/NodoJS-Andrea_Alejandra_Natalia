@@ -17,7 +17,7 @@ router.get('/software/:id', isAuthenticated, async (req, res, next) => {
 router.post('/software/add',isAuthenticated,async (req, res, next) => {
   /* Creamos un objeto de tipo software con el form*/ 
   const software = new Software(req.body);
-  software.asignaturas=req.asignaturas.id;
+  software.asignaturas=req.params.id;
   console.log(software);
   /*Guardamos el usuario */
   await software.save();

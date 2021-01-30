@@ -13,7 +13,7 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="/software/add" method="post">
+          <form action="/software/:id" method="post">
             <div class="form-group">
               <input class="form-control" name="description" cols="80"
                 placeholder="Escribe la descripción del software">
@@ -37,6 +37,7 @@
     <thead>
       <tr>
         <th>N°</th>
+        <th>Descripcion</th>
         <th>Link</th>
       </tr>
     </thead>
@@ -45,6 +46,7 @@
         <tr>
         <%if(asignaturas._id.toString()==software.asignaturas.toString()){%>              
             <td><%= i + 1%></td>
+            <td><%= software[i].desciption%></td>
             <td><%=software[i].url%></td>
         <% } %>
       </tr>
