@@ -51,7 +51,7 @@
             <% var p = 1; %>
             <% for(var i=0; i < asignaturas.length; i++) { %>
               <%for (var j=0; j < user.asignaturas.length;j++){%>
-                <%if(asignaturas[i]._id.toString()==user.asignaturas[j].toString() || user.rol == "Administrador"){%>              
+                <%if(user.rol == "Administrador" || asignaturas[i]._id.toString()==user.asignaturas[j].toString()){%>              
               <tr>
                 <td ><%= p++ %></td>
                 <td>
@@ -64,7 +64,7 @@
                 <td>
                   <% var ruta = asignaturas[i]._id.toString %>
                   <a href="/asignaturas/editar_asignaturas/<%= asignaturas[i]._id %>" class="btn btn-secondary">Edit</a>
-                  <a id="eliminar" onclick="pop_up()" class="btn btn-danger" >Delete</a>
+                  <a id="eliminar" onclick="pop_up()" href="/asignaturas/delete/<%= asignaturas[i]._id %>" class="btn btn-danger" >Delete</a>
                 </td>
                 <% } %>
                 <% } %>
@@ -79,13 +79,13 @@
   </div>
 
   <script>
-    function pop_up(ruta) {
-      var elemento = document.getElementById("eliminar");
-      if (confirm("¿Estas seguro de que quieres eliminar?")) {
-        elemento.setAttribute("href","/asignaturas/editar_asignaturas/"+ruta);
-      } else {
-        elemento.setAttribute("href","/asignaturas");
-      }
+  function pop_up() {
+    var elemento = document.getElementById("eliminar");
+    if (confirm("¿Estas seguro de que quieres eliminar?")) {
+      var hola;
+    } else {
+      elemento.setAttribute("href","/usuarios");
     }
+  }
   </script>
 <% include partials/_footer %>
