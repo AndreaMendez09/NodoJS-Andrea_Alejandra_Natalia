@@ -11,16 +11,22 @@
 <h1>Mi informacion personal:</h1>
 
 <div class="container">
-    <p>Nombre: <%= user.nombre %></p>
+    <label class="etiquetas">Nombre:</label> <p><%= user.nombre %></p>
     <p>Apellidos: <%= user.apellidos %></p>
     <p>Rol: <%= user.rol %></p>
     <p>Correo: <%= user.correo %></p>
     <p>Mis asignaturas:</p>
-    <!--<%//for (var i=0; i < asignaturas.length;i++){%>
-    <p><%=//asignaturas[i].title%></p>
-    <% //} %>-->
+
 
 </div>
+
+<style>
+
+    .etiquetas {
+    
+    }
+
+</style>
 
 
 <% include partials/_footer %>
