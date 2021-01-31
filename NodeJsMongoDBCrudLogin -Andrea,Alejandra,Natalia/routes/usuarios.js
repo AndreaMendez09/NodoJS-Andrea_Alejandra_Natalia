@@ -5,7 +5,7 @@ const Usuario = require('../models/usuarios');
 const Asignatura = require('../models/asignaturas');
 
 /* vamos al modelo de usuarios */
-router.get('/usuarios', async (req, res, next) => {
+router.get('/usuarios', isAuthenticated,async (req, res, next) => {
   /**Guardamos en una varibale lo que encontramos en usuarios */
   const usuarios = await Usuario.find();
   const asignaturas = await Asignatura.find();
@@ -27,24 +27,27 @@ router.post('/usuarios/add',passport.authenticate('local-signup', {
 
 }));
 
-router.get('/usuarios/delete/:id',async (req, res, next) => {
+router.get('/usuarios/delete/:id',isAuthenticated,async (req, res, next) => {
   let { id } = req.params;
   await Usuario.remove({_id: id});
   res.redirect('/usuarios');
 });
 
-router.get('/usuarios/editar_usuarios/:id', async (req, res, next) => {
+router.get('/usuarios/editar_usuarios/:id',isAuthenticated, async (req, res, next) => {
   const asignaturas = await Asignatura.find();
   const usuario = await Usuario.findById(req.params.id);
   console.log(usuario);
   res.render('editar_usuarios', { usuario,asignaturas });
 });
 
-router.post('/usuarios/editar_usuarios/:id', async (req, res, next) => {
+
+router.post('/usuarios/editar_usuarios/:id', isAuthenticated,async (req, res, next) => {
   const { id } = req.params;
   await Usuario.update({_id: id}, req.body);
   res.redirect('/usuarios');
 });
+
+
 
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -68,6 +71,11 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/');
+});
+
 router.get('/software', (req, res, next) => {
   res.render('software');
 });
@@ -83,6 +91,11 @@ router.get('/usuarios', (req, res, next) => {
   res.render('usuarios');
 });
 
+router.get('/info_usuarios',isAuthenticated,(req, res, next) => {
+  res.render('info_usuarios');
+});
+
+
 
 router.post('/signin', passport.authenticate('local-signin', {
   successRedirect: '/profile',
@@ -90,9 +103,7 @@ router.post('/signin', passport.authenticate('local-signin', {
   failureFlash: true
 }));
 
-router.get('/profile',isAuthenticated, (req, res, next) => {
-  res.render('profile');
-});
+
 
 router.get('/logout', (req, res, next) => {
   req.logout();

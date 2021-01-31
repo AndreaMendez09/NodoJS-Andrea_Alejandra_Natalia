@@ -8,11 +8,12 @@
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <div class="container">
+  <%if(user.rol == "Administrador"){%>
   <div class="row">
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="" method="post">
+          <form action="/software/<%= software._id %>" method="post">
             <div class="form-group">
               <input class="form-control" name="description" cols="80"
                 placeholder="Escribe la descripción del software">
@@ -29,21 +30,24 @@
       <br>
     </div>
   </div>
+  <% } %>
 
 <div class="col-md-15">
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>N°</th>
+        <th>Descripcion</th>
         <th>Link</th>
       </tr>
     </thead>
     <tbody>
       <% for(var i=0; i < software.length; i++) { %>
-        <%if(asignaturas._id.toString()==software.asignaturas.toString()){%>              
+        <tr>
             <td><%= i + 1%></td>
+            <td><%= software[i].desciption%></td>
             <td><%=software[i].url%></td>
-        <% } %>
+      </tr>
     <% } %>  
     </tbody>
   </table>

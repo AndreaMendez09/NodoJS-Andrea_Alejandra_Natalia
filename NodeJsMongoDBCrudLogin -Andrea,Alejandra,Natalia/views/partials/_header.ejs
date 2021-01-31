@@ -15,7 +15,12 @@
                       <%if(user.rol == "Administrador"){%>
                       <li><a href="/usuarios">Usuarios</a></li>
                       <%}%>
-                      <li><a href="/">Cerrar sesion</a></li>
+                    <div class="derecha">
+                      <%if(user){%>
+                      <li><a href="/info_usuarios">Mi usuario</a></li>
+                      <%}%>
+                      <li><a href="/logout">Cerrar sesion</a></li>
+                    </div>
                     <%}%>
                 </ul>
             </nav>
@@ -33,6 +38,10 @@
   ul.primer_tab li {
     float: left;
   }
+
+  .derecha {
+    float: right;
+  }
   
   /* clear float */
   ul:after {
@@ -46,18 +55,18 @@
   }
   
   nav {
-    background: #2B2B2B;
+    background: #6c0a75;
     text-align: center;
     letter-spacing: 1px;
-    text-shadow: 1px 1px 1px #0E0E0E;
-    box-shadow: 2px 2px 3px #888;
+    text-shadow: 1px 1px 1px #312431;
+    box-shadow: 2px 2px 3px rgb(136, 136, 136);
   }
   
 
   ul.primer_tab li a {
     display: block;
     padding: 20px 30px;
-    border-right: 1px solid rgb(145, 21, 21);
+    border-right: 1px solid rgb(135, 21, 145);
     text-decoration: none;
     color: #fff;
 

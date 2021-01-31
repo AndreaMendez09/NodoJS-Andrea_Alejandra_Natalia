@@ -26,7 +26,11 @@
             <div class="form-group">
               <input class="form-control" type="text" name="password" placeholder="Contraseña">
             </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="imagen" placeholder="Introduce una url con foto">
+            </div>
             <div>
+              <label>Rol:</label>
               <select name="rol">
                 <option>Administrador</option>
                 <option>Profesor</option>
@@ -35,12 +39,13 @@
             </div>
             <br>
             <div class="form-group">
+              <label>Asignaturas:  </label>
               <%for (var i=0; i < asignaturas.length;i++){%>
               <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
               <label for="asignaturas"><%=asignaturas[i].title%></label>
               <% } %>
             </div>
-            <button class="btn btn-primary" type="submit">Añadir</button>
+            <button class="btn btn-secondary" type="submit">Añadir</button>
           </form>
         </div>
       </div>
@@ -48,7 +53,7 @@
       <br>
     </div>
 
-    <div class="col-md-15">
+    <div class="col-md-10">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -81,8 +86,8 @@
               <% } %>
             </td>
             <td>
-              <a href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
               <a href="/usuarios/editar_usuarios/<%= usuarios[i]._id %>" class="btn btn-secondary">Edit</a>
+              <a id="eliminar" onclick="pop_up()" href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
             </td>
           </tr>
           <% } %>
@@ -92,5 +97,15 @@
     </div>
   </div>
 </div>
+<script>
+  function pop_up() {
+    var elemento = document.getElementById("eliminar");
+    if (confirm("¿Estas seguro de que quieres eliminar?")) {
+      var hola;
+    } else {
+      elemento.setAttribute("href","/usuarios");
+    }
+  }
+</script>
 <%}%>
 <% include partials/_footer %>
