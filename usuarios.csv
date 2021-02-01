@@ -1,7 +1,8 @@
-Andrea,Mendez,Andrea@gmail.com,Administrador
-Natalia,Sanchez,Natalia@gmail.com,Administrador
-Alejandra,Cortes,jakaleja@gmail.com,Administrador
-Fernando,Garcia,Fer@hotmail.com,Profesor,Fisica
-Teresa,Castillo,Teresa@hotmail.com,Profesor,Matematicas
-Jose Manuel,Costa,Jose@hotmail.com,Alumno, Fisica Matematicas
-Sofia,Gomez,Sofia@hotmail.com,Alumno,Matematicas
+Andrea,Mendez,Andrea@gmail.com,1,Administrador
+Natalia,Sanchez,Natalia@gmail.com,1,Administrador
+Alejandra,Cortes,jakaleja@gmail.com,1,Administrador
+Fernando,Garcia,Fer@hotmail.com,1,Profesor,Fisica
+Teresa,Castillo,Teresa@hotmail.com,1,Profesor,Matematicas
+Jose Manuel,Costa,Jose@hotmail.com,1,Alumno, Fisica Matematicas
+Sofia,Gomez,Sofia@hotmail.com,1,Alumno,Matematicas
+Admin,admin,admin@gmail.com,1,Administrador

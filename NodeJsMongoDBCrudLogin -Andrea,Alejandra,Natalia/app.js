@@ -6,12 +6,15 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const logger = require('morgan');
+const fileUpload = require('express-fileupload');
+
 
 
 
 var app = express();
 require('./database');
 require('./passport/local-auth');
+app.use(fileUpload());
 
 var asignaturasRouter = require('./routes/asignaturas');
 var usersRouter = require('./routes/usuarios');

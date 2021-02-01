@@ -1,8 +1,46 @@
 const router = require('express').Router();
 const passport = require('passport');
+//conectamos del fichero csv
+const fs = require('fs'); // filesystem
+const csv = require('csv-parser');// Encargado de parsear
+const result=[];
 /*Guardamos los datos*/
 const Usuario = require('../models/usuarios');
 const Asignatura = require('../models/asignaturas');
+
+//leermos el fichero csv
+const readCsvFile = async (fileName) => {
+    await fs.createReadStream(fileName)
+      .pipe(csv({ separator: "," }))
+      .on("data", (data) => result.push(data))
+      .on("end", () => {
+     
+          result.map(user=>{
+            var usuarios = new Usuario
+            usuarios.nombre = user.nombre;
+            usuarios.apellidos = user.apellidos;
+            usuarios.correo = user.correo;
+            usuarios.password = user.password;
+            usuarios.imagen_perfil = user.imagen_perfil;
+            usuarios.rol = user.rol;
+            usuarios.tipo_curso = user.tipo_curso;
+            usuarios.asignaturas = user.asignaturas;
+            usuarios.save();
+          });   
+    })
+};
+
+//añadimos usuarios al fichero csv
+router.post('/addUserCSV', (req, res) => {
+    var fileUsers=req.files.file;
+    cont=0;
+    console.log(fileUsers.mimetype);
+    fileUsers.mv(`./files/users/${fileUsers.name}`,err=>{
+      if(err) return res.status(500).send({message:err});
+      readCsvFile('./files/users/${fileUsers.name}');
+      res.redirect("/listUsers");
+    });
+}) ;
 
 /* vamos al modelo de usuarios */
 router.get('/usuarios', isAuthenticated,async (req, res, next) => {
@@ -18,14 +56,14 @@ router.get('/usuarios', isAuthenticated,async (req, res, next) => {
   });
 });
 
-router.post('/usuarios/add',passport.authenticate('local-signup', {
+/*router.post('/usuarios/add',passport.authenticate('local-signup', {
  
   successRedirect: '/usuarios',
   failureRedirect: '/usuarios',
   failureFlash: true,
 
 
-}));
+}));*/
 
 router.get('/usuarios/delete/:id',isAuthenticated,async (req, res, next) => {
   let { id } = req.params;
