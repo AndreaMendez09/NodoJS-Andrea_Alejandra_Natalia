@@ -23,6 +23,10 @@ const userSchema = new Schema({
   imagen_perfil: {
     type: String, 
   },
+  tipo_curso: {
+    type: String, 
+    required: true 
+  },
   asignaturas: { 
     type: Array
   },
