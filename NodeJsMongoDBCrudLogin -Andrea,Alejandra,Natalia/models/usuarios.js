@@ -25,7 +25,6 @@ const userSchema = new Schema({
   },
   tipo_curso: {
     type: String, 
-    required: true 
   },
   asignaturas: { 
     type: Array

@@ -43,6 +43,14 @@
                         <option>Profesor</option>
                         <option>Alumno</option>
                     </select>
+                <%if(usuario.rol == "Alumno" ){%>
+                    <label style="margin-left: 50px;">Tipo de curso:</label>
+                    <select name="tipo_curso">
+                      <option>Grado</option>
+                      <option>Master</option>
+                      <option>Doctorado</option>
+                    </select>
+                <% } %>
                 </div>
 
                 <div class="form-group">

@@ -69,8 +69,8 @@ var emails=[];
 var mailOption = {
   from:'proyectonode3@gmail.com',
   to: emails,
-  subject: 'Eliminar una asignatura '+ asignatura.title,
-  text: "Holaaaaaa"
+  subject: 'Asignatura eliminada'+ asignatura.title,
+  text: "Buenos dias, sentimos informar que su asignatura fue eliminada de su plan de estudios"
 
 };
   transporter.sendMail(mailOption,function(error,info){
