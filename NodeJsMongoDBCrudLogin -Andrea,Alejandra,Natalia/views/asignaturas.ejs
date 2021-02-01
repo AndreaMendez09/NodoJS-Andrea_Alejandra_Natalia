@@ -25,6 +25,15 @@
                 placeholder="Escribe la información de instalación"
                 ></textarea>
             </div>
+            <div>
+              <label>Tipo de asignatura:</label>
+              <select name="tipo_asignatura">
+                <option>Grado</option>
+                <option>Master</option>
+                <option>Doctorado</option>
+              </select>
+            </div>
+            <br>
             <button class="btn btn-secondary" type="submit">Añadir</button>
           </form>
         </div>
@@ -42,6 +51,7 @@
               <th>Nombre</th>
               <th>Description</th>
               <th>Info de instalación</th>
+              <th>Tipo Asignatura</th>
               <%if(user.rol == "Administrador" || user.rol == "Profesor"){%>
               <th>Opciones</th>
               <% } %>
@@ -59,6 +69,7 @@
               </td>
                 <td><%= asignaturas[i].description%></td>
                 <td><%= asignaturas[i].info_instalacion%></td>
+                <td><%= asignaturas[i].tipo_asignatura%></td>
 
                 <%if(user.rol == "Administrador" || user.rol == "Profesor"){%>
                 <td>

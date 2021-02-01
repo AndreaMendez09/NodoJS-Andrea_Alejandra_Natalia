@@ -16,6 +16,10 @@ const AsignaturaSchema = Schema({
     required: true,
     default: "buenas",
   },
+  tipo_asignatura: { 
+    type: String, 
+    required: true 
+  }
 });
 
 module.exports = mongoose.model('asignaturas', AsignaturaSchema);
