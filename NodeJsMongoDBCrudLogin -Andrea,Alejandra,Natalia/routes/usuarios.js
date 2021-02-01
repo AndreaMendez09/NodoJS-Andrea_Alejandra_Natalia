@@ -80,6 +80,10 @@ router.get('/software', (req, res, next) => {
   res.render('software');
 });
 
+router.get('/correo_alertas', (req, res, next) => {
+  res.render('correo_alertas');
+});
+
 router.post('/', passport.authenticate('local-signin', {
   successRedirect: '/asignaturas',
   failureRedirect: '/',

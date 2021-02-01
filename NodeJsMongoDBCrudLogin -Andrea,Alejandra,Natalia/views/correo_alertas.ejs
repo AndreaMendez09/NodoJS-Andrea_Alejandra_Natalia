@@ -1,0 +1,39 @@
+<% include partials/_header %>
+
+<head>
+    <meta charset="utf-8">
+    <title>Enviar un correo</title>
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="post">
+              <div class="form-group">
+                <label>Titulo:</label>
+                <input class="form-control" type="text" name="title" placeholder="Introduce un titulo" required>
+              </div>
+                <div class="form-group">
+                    <label>Correo:</label>
+                    <textarea class="form-control" name="cuerpo" cols="80" placeholder="Escribe la información de instalación" style="height:300px ;" required></textarea>
+                  </div>
+                  <div>
+                    <label>Tipo peticion:</label>
+                    <select name="tipo_peticion">
+                      <option>Queja</option>
+                      <option>Sugerencia</option>
+                      <option>Error</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+                  <button class="btn btn-secundary" type="submit">Enviar correo</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>
