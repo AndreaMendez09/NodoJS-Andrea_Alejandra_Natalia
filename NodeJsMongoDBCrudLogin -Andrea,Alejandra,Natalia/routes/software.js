@@ -33,10 +33,9 @@ router.post('/software/add/:id',isAuthenticated,async (req, res, next) => {
 });
 
 router.get('/software/delete/:id',isAuthenticated,async (req, res, next) => {
-
   let { id } = req.params;
   await Software.remove({_id: id});
-  res.redirect('/software/add/:id');
+  res.redirect('/software');
 });
 
 

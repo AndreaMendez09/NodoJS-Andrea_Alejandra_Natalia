@@ -5,28 +5,25 @@
         <title>Universidad de las mejores</title>
     <body>
         <div id="menu">
-            <nav>
-                <ul class="primer_tab">  
-                  <%if(!(user)){%>
-                      <li><a href="/">Universidad</a></li>
-                    <%}%>
-                    <%if(user){%>
-                    <li><a href="/asignaturas">Asignaturas</a></li>
-                    <%if(user.rol == "Alumno"){%>
-                    <li><a href="/correo_alertas">Sugerencias</a></li>
-                    <%}%>
-                      <%if(user.rol == "Administrador"){%>
-                      <li><a href="/usuarios">Usuarios</a></li>
-                      <%}%>
-                    <div class="derecha">
-                      <%if(user){%>
-                      <li><a href="/info_usuarios">Mi usuario</a></li>
-                      <%}%>
-                      <li><a href="/logout">Cerrar sesion</a></li>
-                    </div>
-                    <%}%>
-                </ul>
-            </nav>
+          <nav>
+            <ul class="primer_tab">  
+              <%if(!(user)){%>
+                  <li><a href="/">Universidad</a></li>
+                <%}%>
+                <%if(user){%>
+                <li><a href="/asignaturas">Asignaturas</a></li>
+                  <%if(user.rol == "Administrador"){%>
+                  <li><a href="/usuarios">Usuarios</a></li>
+                  <%}%>
+                <div class="derecha">
+                  <%if(user){%>
+                  <li><a href="/info_usuarios">Mi usuario</a></li>
+                  <%}%>
+                  <li><a href="/logout">Cerrar sesion</a></li>
+                </div>
+                <%}%>
+            </ul>
+        </nav>
         </div>
 <style>
   

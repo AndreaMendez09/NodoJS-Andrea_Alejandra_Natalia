@@ -44,16 +44,21 @@ router.post('/addUserCSV', (req, res) => {
 
 /* vamos al modelo de usuarios */
 router.get('/usuarios', isAuthenticated,async (req, res, next) => {
-  /**Guardamos en una varibale lo que encontramos en usuarios */
-  const usuarios = await Usuario.find();
-  const asignaturas = await Asignatura.find();
+  if(req.user.rol=="Administrador"){
+    /**Guardamos en una varibale lo que encontramos en usuarios */
+    const usuarios = await Usuario.find();
+    const asignaturas = await Asignatura.find();
 
-  /*Imprimimos por consola para ver que los datos existen */
-  console.log(usuarios);
-  /*Devolvemos los datos a las vistas */
-  res.render('usuarios', {
-    usuarios, asignaturas
-  });
+    /*Imprimimos por consola para ver que los datos existen */
+    console.log(usuarios);
+    /*Devolvemos los datos a las vistas */
+    res.render('usuarios', {
+      usuarios, asignaturas
+    });
+  }else{
+    res.redirect('/info_usuarios');
+  }
+  
 });
 
 /*router.post('/usuarios/add',passport.authenticate('local-signup', {
