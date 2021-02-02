@@ -20,11 +20,10 @@ const readCsvFile = async (fileName) => {
             usuarios.nombre = user.nombre;
             usuarios.apellidos = user.apellidos;
             usuarios.correo = user.correo;
-            usuarios.password = user.password;
+            usuarios.password = usuarios.encryptPassword(user.password);
             usuarios.imagen_perfil = user.imagen_perfil;
             usuarios.rol = user.rol;
             usuarios.tipo_curso = user.tipo_curso;
-            usuarios.asignaturas = user.asignaturas;
             usuarios.save();
           });   
     })
@@ -35,12 +34,40 @@ router.post('/addUserCSV', (req, res) => {
     var fileUsers=req.files.file;
     cont=0;
     console.log(fileUsers.mimetype);
-    fileUsers.mv(`./files/users/${fileUsers.name}`,err=>{
+    fileUsers.mv(`./files/users/${fileUsers.name}`,err=>{//ruta predeterminada donde guarda el csv 
       if(err) return res.status(500).send({message:err});
-      readCsvFile('./files/users/${fileUsers.name}');
-      res.redirect("/listUsers");
+      readCsvFile(`./files/users/${fileUsers.name}`); 
+      res.redirect("/usuarios");
     });
 }) ;
+
+// vamos al modelo de usuarios 
+router.get('/usuarios', isAuthenticated,async (req, res, next) => {
+  //Guardamos en una varibale lo que encontramos en usuarios 
+  const usuarios = await Usuario.find();
+  const asignaturas = await Asignatura.find();
+
+  //Imprimimos por consola para ver que los datos existen 
+  console.log(usuarios);
+  //Devolvemos los datos a las vistas 
+  res.render('usuarios', {
+    usuarios, asignaturas
+  });
+});
+
+// vamos al modelo de usuarios 
+router.get('/usuarios', isAuthenticated,async (req, res, next) => {
+  //Guardamos en una varibale lo que encontramos en usuarios 
+  const usuarios = await Usuario.find();
+  const asignaturas = await Asignatura.find();
+
+  //Imprimimos por consola para ver que los datos existen 
+  console.log(usuarios);
+  //Devolvemos los datos a las vistas 
+  res.render('usuarios', {
+    usuarios, asignaturas
+  });
+});
 
 /* vamos al modelo de usuarios */
 router.get('/usuarios', isAuthenticated,async (req, res, next) => {
@@ -61,14 +88,14 @@ router.get('/usuarios', isAuthenticated,async (req, res, next) => {
   
 });
 
-/*router.post('/usuarios/add',passport.authenticate('local-signup', {
+router.post('/usuarios/add',passport.authenticate('local-signup', {
  
   successRedirect: '/usuarios',
   failureRedirect: '/usuarios',
   failureFlash: true,
 
 
-}));*/
+}));
 
 router.get('/usuarios/delete/:id',isAuthenticated,async (req, res, next) => {
   let { id } = req.params;
@@ -125,6 +152,36 @@ router.get('/software', (req, res, next) => {
 
 router.get('/correo_alertas', (req, res, next) => {
   res.render('correo_alertas');
+});
+
+router.get('/correo_alertas/enviar', isAuthenticated, async (req, res, next) => {
+  var emails = [];
+  for (var i = 0; i < users.length; i++) {
+    if (user.rol == "Administrador") {
+      emails.push(users[i].correo);
+      console.log(emails);
+    }
+  }
+
+  var mailOption = {
+    from: 'proyectonode3@gmail.com',
+    to: emails,
+    subject: title,
+    text: cuerpo
+
+  };
+  transporter.sendMail(mailOption, function (error, info) {
+
+    if (error) {
+      console.log(error);
+
+    } else {
+      console.log('Email Enviado: ' + info.response);
+    }
+
+  });
+
+  res.redirect('/correo_alertas');
 });
 
 router.post('/', passport.authenticate('local-signin', {

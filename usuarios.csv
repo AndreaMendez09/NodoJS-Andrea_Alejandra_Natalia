@@ -1,8 +1,9 @@
-Andrea,Mendez,Andrea@gmail.com,1,Administrador
-Natalia,Sanchez,Natalia@gmail.com,1,Administrador
-Alejandra,Cortes,jakaleja@gmail.com,1,Administrador
-Fernando,Garcia,Fer@hotmail.com,1,Profesor,Fisica
-Teresa,Castillo,Teresa@hotmail.com,1,Profesor,Matematicas
-Jose Manuel,Costa,Jose@hotmail.com,1,Alumno, Fisica Matematicas
-Sofia,Gomez,Sofia@hotmail.com,1,Alumno,Matematicas
-Admin,admin,admin@gmail.com,1,Administrador
+nombre,apellidos,correo,password,imagen_perfil,rol,tipo_curso
+Andrea,Mendez,Andrea@gmail.com,1,hddfgh,Administrador,2
+Natalia,Sanchez,Natalia@gmail.com,1,hddfgh,Administrador,2
+Alejandra,Cortes,jakaleja@gmail.com,1,hddfgh,Administrador,2
+Fernando,Garcia,Fer@hotmail.com,1,hddfgh, Alumno,2
+Teresa,Castillo,Teresa@hotmail.com,1,hddfgh,Profesor,2
+Jose Manuel,Costa,Jose@hotmail.com, 1,hddfgh1,Alumno,2
+Sofia,Gomez,Sofia@hotmail.com,1,hddfgh,Alumno,2
+Admin,admin,admin@gmail.com,1,hddfgh,Administrador,2

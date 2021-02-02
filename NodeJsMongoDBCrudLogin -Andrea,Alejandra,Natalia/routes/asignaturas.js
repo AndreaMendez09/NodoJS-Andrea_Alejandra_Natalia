@@ -1,6 +1,10 @@
 const express = require('express');
 const asignaturas = require('../models/asignaturas');
 const router = express.Router();
+//conectamos del fichero csv
+const fs = require('fs'); // filesystem
+const csv = require('csv-parser');// Encargado de parsear
+const result=[];
 /*Aca guardamos los datos*/ 
 const Asignatura = require('../models/asignaturas');
 const User = require('../models/usuarios');
@@ -24,6 +28,35 @@ var transporter = nodemailer.createTransport({
 
 })
 
+//leermos el fichero csv
+const readCsvFile = async (fileName) => {
+    await fs.createReadStream(fileName)
+      .pipe(csv({ separator: "," }))
+      .on("data", (data) => result.push(data))
+      .on("end", () => {
+     
+          result.map(asig=>{
+            var asignaturas = new Asignatura
+            asignaturas.title = asig.title;
+            asignaturas.desciption = asig.desciption;
+            asignaturas.info_instalacion = asig.info_instalacion;
+            asignaturas.tipo_asignatura = asig.tipo_asignatura;
+            asignaturas.save();
+          });   
+    })
+};
+
+//añadimos asignaturas al fichero csv
+router.post('/addAsignaturaCSV', (req, res) => {
+    var fileAsig=req.files.file;
+    cont=0;
+    console.log(fileAsig.mimetype);
+    fileAsig.mv(`./files/asignaturas/${fileAsig.name}`,err=>{
+      if(err) return res.status(500).send({message:err});
+      readCsvFile(`./files/asignaturas/${fileAsig.name}`);
+      res.redirect("/asignaturas");
+    });
+}) ;
 
 
 /* vamos al modelo de asignaturas */
