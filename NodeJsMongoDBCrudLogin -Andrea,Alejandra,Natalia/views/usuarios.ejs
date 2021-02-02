@@ -29,22 +29,24 @@
             <div class="form-group">
               <input class="form-control" type="text" name="imagen" placeholder="Introduce una url con foto">
             </div>
-            <div>
+            <div id="tipo" name="tipo">
               <label>Rol:</label>
               <select name="rol">
                 <option>Administrador</option>
                 <option>Profesor</option>
                 <option>Alumno</option>
               </select>
+            </div>
 
-    
+              <div id="tipoEstudio">
+             
               <label style="margin-left: 50px;">Tipo de curso:</label>
               <select name="tipo_curso">
                 <option>Grado</option>
                 <option>Master</option>
                 <option>Doctorado</option>
               </select>
-        
+              
             </div>
             <br>
             <div class="form-group">
@@ -79,36 +81,52 @@
         </thead>
         <tbody>
           <% for(var i=0; i < usuarios.length; i++) { %>
-          <tr>
-            <td><%= i + 1%></td>
-            <td><%= usuarios[i].nombre%></td>
-            <td><%= usuarios[i].apellidos%></td>
-            <td><%= usuarios[i].correo%></td>
-            <td><%= usuarios[i].rol%></td>
-            <td><%= usuarios[i].tipo_curso%></td>
-            <td>
-              <%for (var j=0; j < usuarios[i].asignaturas.length;j++){%>
-              <%for (var k=0;k < asignaturas.length;k++){%>
-
-              <%if(asignaturas[k]._id.toString()==usuarios[i].asignaturas[j].toString()){%>
-              <%= asignaturas[k].title%>
-              <% } %>
-              <% } %>
-              <% } %>
-            </td>
-            <td>
-              <a href="/usuarios/editar_usuarios/<%= usuarios[i]._id %>" class="btn btn-secondary">Edit</a>
-              <a id="eliminar" onclick="pop_up()" href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
-            </td>
-          </tr>
-          <% } %>
+            <tr>
+              <td><%= i + 1%></td>
+              <td><%= usuarios[i].nombre%></td>
+              <td><%= usuarios[i].apellidos%></td>
+              <td><%= usuarios[i].correo%></td>
+              <td><%= usuarios[i].rol%></td>
+              <td>
+                <%for (var j=0; j < usuarios[i].asignaturas.length;j++){%>
+                <%for (var k=0;k < asignaturas.length;k++){%>
+  
+                <%if(asignaturas[k]._id.toString()==usuarios[i].asignaturas[j].toString()){%>
+                <%= asignaturas[k].title%>
+                <% } %>
+                <% } %>
+                <% } %>
+              </td>
+              <td>
+                <a href="/usuarios/editar_usuarios/<%= usuarios[i]._id %>" class="btn btn-secondary">Edit</a>
+                <a id="eliminar" onclick="pop_up()" href="/usuarios/delete/<%= usuarios[i]._id %>" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+            <% } %>
         </tbody>
       </table>
 
     </div>
   </div>
 </div>
-<script>
+<script language="javascript" type="text/javascript">
+  // Dependiendo del usuario, se mostrará las asignaturas que podrá matricular. Esto lo puede hacer el alumno y el
+  // profesor. El administrador no, ya que se encarga de administrar todo el campus.
+  $(document).ready(function () {
+    $("#tipoEstudio").show();
+    $("#tipo").change(function () {
+      // Si seleccionamos uno de estos dois usuarios, se muestrán las asignaturas
+      if ($('#tipo').val() == "Alumno") {
+        $("#tipoEstudio").show();
+        // En caso contrario, se oculta.
+      } else {
+        $("#tipoEstudio").hide();
+      }
+    });
+  });
+
+//No va el scrip nose sabe porque
+
   function pop_up() {
     var elemento = document.getElementById("eliminar");
     if (confirm("¿Estas seguro de que quieres eliminar?")) {

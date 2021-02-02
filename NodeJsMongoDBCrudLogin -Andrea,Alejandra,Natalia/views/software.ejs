@@ -13,7 +13,7 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="/software/<%= software._id %>" method="post">
+          <form action="/software/add/<%= asignatura._id %>" method="post">
             <div class="form-group">
               <input class="form-control" name="description" cols="80"
                 placeholder="Escribe la descripción del software">
@@ -39,18 +39,32 @@
         <th>N°</th>
         <th>Descripcion</th>
         <th>Link</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
       <% for(var i=0; i < software.length; i++) { %>
         <tr>
             <td><%= i + 1%></td>
-            <td><%= software[i].desciption%></td>
+            <td><%= software[i].description%></td>
             <td><%=software[i].url%></td>
+            <td>
+              <a id="eliminar" onclick="pop_up()" href="/software/delete/<%= software[i]._id %>" class="btn btn-danger" >Delete</a>
+            </td>
       </tr>
     <% } %>  
     </tbody>
   </table>
 </div>
+<script>
+  function pop_up() {
+    var elemento = document.getElementById("eliminar");
+    if (confirm("¿Estas seguro de que quieres eliminar?")) {
+      var hola;
+    } else {
+      elemento.setAttribute("href","/usuarios");
+    }
+  }
+  </script>
 
 <% include partials/_footer %>
