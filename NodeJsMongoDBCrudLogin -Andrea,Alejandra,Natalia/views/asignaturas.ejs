@@ -13,17 +13,17 @@
         <div class="card-body">
           <form action="/asignaturas/add" method="post">
             <div class="form-group">
-              <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura">
+              <input class="form-control" type="text" name="title" placeholder="Nombre de la asignatura" required>
             </div>
             <div class="form-group">
               <textarea class="form-control" name="description" cols="80"
                 placeholder="Escribe la descripción de la asignatura"
-                ></textarea>
+                required></textarea>
             </div>
             <div class="form-group">
               <textarea class="form-control" name="info_instalacion" cols="80"
                 placeholder="Escribe la información de instalación"
-                ></textarea>
+                required></textarea>
             </div>
             <div>
               <label>Tipo de asignatura:</label>

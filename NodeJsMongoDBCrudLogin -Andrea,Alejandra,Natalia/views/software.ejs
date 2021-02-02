@@ -16,11 +16,11 @@
           <form action="/software/add/<%= asignatura._id %>" method="post">
             <div class="form-group">
               <input class="form-control" name="description" cols="80"
-                placeholder="Escribe la descripción del software">
+                placeholder="Escribe la descripción del software"required>
             </div>
             <div class="form-group">
               <input class="form-control" name="url" cols="80"
-                placeholder="Escribe la url"></textarea>
+                placeholder="Escribe la url" required></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Añadir</button>
           </form>
