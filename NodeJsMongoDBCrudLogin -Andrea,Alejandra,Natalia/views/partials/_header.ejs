@@ -12,6 +12,9 @@
                 <%}%>
                 <%if(user){%>
                 <li><a href="/asignaturas">Asignaturas</a></li>
+                <%if(user.rol == "Alumno"){%>
+                <li><a href="/correo_alertas">Sugerencias</a></li>
+                <%}%>
                   <%if(user.rol == "Administrador"){%>
                   <li><a href="/usuarios">Usuarios</a></li>
                   <%}%>

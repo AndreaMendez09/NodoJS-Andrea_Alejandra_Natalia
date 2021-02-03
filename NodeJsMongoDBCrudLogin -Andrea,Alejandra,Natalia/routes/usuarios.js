@@ -154,20 +154,42 @@ router.get('/correo_alertas', (req, res, next) => {
   res.render('correo_alertas');
 });
 
+//Requerimos el paquete
+var nodemailer = require('nodemailer');
+
+//creamos el objeto de tranporte
+var transporter = nodemailer.createTransport({
+
+  host:'smtp.gmail.com',
+  port: 465,
+  secure: true,
+
+  auth: {
+    user:"proyectonode3@gmail.com",
+    pass: "proyecto123"
+
+  }
+
+});
+
 router.get('/correo_alertas/enviar', isAuthenticated, async (req, res, next) => {
   var emails = [];
+  var informacion = req.body; 
+  const users = await Usuario.find();
   for (var i = 0; i < users.length; i++) {
-    if (user.rol == "Administrador") {
-      emails.push(users[i].correo);
-      console.log(emails);
+    if (users[i].rol == "Administrador") {
+      emails.push(users[i].correo);  
     }
   }
 
+  //console.log(emails);
+  console.log(req.body);
+
   var mailOption = {
     from: 'proyectonode3@gmail.com',
-    to: emails,
-    subject: title,
-    text: cuerpo
+    to: 'andreisima01@hotmail.com',
+    subject: req.body.title,
+    text: informacion.cuerpo
 
   };
   transporter.sendMail(mailOption, function (error, info) {
