@@ -172,23 +172,18 @@ var transporter = nodemailer.createTransport({
 
 });
 
-router.get('/correo_alertas/enviar', isAuthenticated, async (req, res, next) => {
+router.post('/correo_alertas/enviar', isAuthenticated, async (req, res, next) => {
   var emails = [];
   var informacion = req.body; 
-  const users = await Usuario.find();
+  const users = await Usuario.find({'rol':'Administrador'});
   for (var i = 0; i < users.length; i++) {
-    if (users[i].rol == "Administrador") {
-      emails.push(users[i].correo);  
-    }
+    emails.push(users[i].correo);  
   }
-
-  //console.log(emails);
-  console.log(req.body);
 
   var mailOption = {
     from: 'proyectonode3@gmail.com',
     to: 'andreisima01@hotmail.com',
-    subject: req.body.title,
+    subject: informacion.title + " - " + informacion.tipo_peticion,
     text: informacion.cuerpo
 
   };

@@ -129,6 +129,7 @@ router.get('/asignaturas/editar_asignaturas/:id',isAuthenticated, async (req, re
   res.render('editar_asignaturas', { asignaturas });
 });
 
+//Debemos enviar un correo a los usuarios cuando se edite una asignatura en la que esten
 router.post('/asignaturas/editar_asignaturas/:id', isAuthenticated, async (req, res, next) => {
   const { id } = req.params;
   await Asignatura.update({_id: id}, req.body);
