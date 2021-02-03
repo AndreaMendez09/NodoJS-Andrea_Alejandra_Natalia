@@ -85,7 +85,7 @@ router.post('/asignaturas/add', isAuthenticated,async (req, res, next) => {
 router.get('/asignaturas/delete/:id',isAuthenticated,async (req, res, next) => {
   let { id } = req.params;
   const asignatura = await Asignatura.findById(id);
-const users = await User.find();
+  const users = await User.find();
 
 var emails=[];
   var mensaje = "Asginatura Eliminado";
@@ -132,6 +132,39 @@ router.get('/asignaturas/editar_asignaturas/:id',isAuthenticated, async (req, re
 //Debemos enviar un correo a los usuarios cuando se edite una asignatura en la que esten
 router.post('/asignaturas/editar_asignaturas/:id', isAuthenticated, async (req, res, next) => {
   const { id } = req.params;
+  const asignatura = await Asignatura.findById(id);
+  const users = await User.find();
+
+var emails=[];
+  var mensaje = "Asginatura Eliminado";
+  for(var i=0; i < users.length; i++) { 
+    for (var j=0; j < users[i].asignaturas.length;j++){
+      if(asignatura._id.toString()==users[i].asignaturas[j].toString()){
+        emails.push(users[i].correo);
+        console.log(emails);
+      }
+    }
+  }
+
+  
+var mailOption = {
+  from:'proyectonode3@gmail.com',
+  to: emails,
+  subject: 'La asignatura de '+ asignatura.title + "ha sido modificada",
+  text: "Buenos dias, le informamos para que compruebe los cambios realizados en dicha asignatura"
+
+};
+  transporter.sendMail(mailOption,function(error,info){
+
+    if(error){
+      console.log(error);
+  
+    }else{
+      console.log('Email Enviado: '+ info.response);
+    }
+  });
+
+
   await Asignatura.update({_id: id}, req.body);
   res.redirect('/asignaturas');
 });
