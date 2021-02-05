@@ -49,7 +49,7 @@
             <td><%= software[i].description%></td>
             <td><%=software[i].url%></td>
             <td>
-              <a id="eliminar" onclick="pop_up()" href="/software/delete/<%= software[i]._id %>" class="btn btn-danger" >Delete</a>
+              <a id="eliminar" onclick="pop_up()" href="/software/delete/<%= asignatura._id %>/<%= software[i]._id %>" class="btn btn-danger" >Delete</a>
             </td>
       </tr>
     <% } %>  
