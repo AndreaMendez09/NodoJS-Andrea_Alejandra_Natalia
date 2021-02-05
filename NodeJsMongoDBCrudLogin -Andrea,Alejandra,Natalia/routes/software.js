@@ -4,7 +4,25 @@ const router = express.Router();
 const Asignatura = require('../models/asignaturas');
 const Software = require('../models/software');
 
+router.post('/software/archivos/:id', isAuthenticated, async(req,res) =>{
+  console.log("ewrt");
 
+  var software = new Software();
+  software.archivo=req.files.file.name;
+  software.asignatura=req.params.id;
+  await software.save();
+  software = await Software.find({asignatura:req.params.id});
+  const asignatura = await Asignatura.findById(req.params.id);
+
+  let EDFile = req.files.file
+  EDFile.mv(`./files/${EDFile.name}`,err =>{
+    if(err) return res.status(500).send({ message : err})
+    console.log(software);
+    res.render('software', { 
+      software,asignatura
+    }); 
+   })
+});
 
 router.get('/software/:id', isAuthenticated, async (req, res, next) => {
   const software = await Software.find({asignatura:req.params.id});
