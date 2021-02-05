@@ -8,7 +8,7 @@
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <%if(user.rol == "Administrador"){%>
-<div class="container" >
+<div class="container">
   <div class="row">
     <div class="col-md-10">
       <div class="card">
@@ -42,32 +42,99 @@
 
             <div id="tipoEstudio" style="display: none;">
               <label>Tipo de curso:</label>
-              <select name="tipo_curso" id="selectEstudio">
+              <select name="tipo_curso" id="selectEstudio" onchange="tipoCurso()" >
+                <option value="none" selected disabled hidden>Selecciona una opcion</option>
                 <option value="Grado">Grado</option>
                 <option value="Master">Master</option>
                 <option value="Doctorado">Doctorado</option>
               </select>
             </div>
 
-              <script>
-                function alCambiar() {
-                 var rol_seleccionado =  $('#tipo').val();
-                 if (rol_seleccionado == "Alumno") {
-                    $("#tipoEstudio").show();
-                 }else {
-                    $("#tipoEstudio").hide();
-                 }
+            <script>
+              function alCambiar() {
+                var rol_seleccionado = $('#tipo').val();
+                //let tuSitioCheckbox = $("#asignatura_box");
+                //tuSitioCheckbox.prop("checked", !tuSitioCheckbox.prop("checked"));
+                if (rol_seleccionado == "Alumno") {
+                  $("#tipoEstudio").show();
+                  $("#solo_grado").hide();
+                  $("#todas").hide();
+                  $("#solo_master").hide();
+                  $("#solo_doctorado").hide();
+                } else {
+                  //$("#tipoEstudio").selectedIndex=1;
+                  $("#tipoEstudio").hide();
+                  $("#todas").show();
+                  $("#solo_master").hide();
+                  $("#solo_doctorado").hide();
+                  $("#solo_grado").hide();               
                 }
-              </script>
+              }
 
-            
+              function tipoCurso() {
+                var curso_seleccionado = $('#selectEstudio').val();
+                var rol_seleccionado = $('#tipo').val();
+
+
+                if (rol_seleccionado != "Alumno") {
+                  $("#todas").show();
+                  $("#solo_master").hide();
+                  $("#solo_doctorado").hide();
+                  $("#solo_grado").hide();
+                }
+                if (curso_seleccionado == "Grado") {
+                  $("#solo_grado").show();
+                  $("#todas").hide();
+                  $("#solo_master").hide();
+                  $("#solo_doctorado").hide();
+                } else if (curso_seleccionado == "Master"){
+                  $("#solo_grado").hide();
+                  $("#todas").hide();
+                  $("#solo_master").show();
+                  $("#solo_doctorado").hide();
+                } else if (curso_seleccionado == "Doctorado") {
+                  $("#solo_grado").hide();
+                  $("#todas").hide();
+                  $("#solo_master").hide();
+                  $("#solo_doctorado").show();
+                }
+              }
+            </script>
+
+
             <br>
-            <div class="form-group">
+            <div class="form-group" id="todas">
               <label>Asignaturas: </label>
-
-              <%for (var i=0; i < asignaturas.length;i++){%>                  
-                <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
-                <label for="asignaturas"><%=asignaturas[i].title%></label>
+              <%for (var i=0; i < asignaturas.length;i++){%>
+              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>" id="asignatura_box">
+              <label for="asignaturas"><%=asignaturas[i].title%></label>
+              <% } %>
+            </div>
+            <div class="form-group" id="solo_grado" style="display: none;">
+              <label>Asignaturas de grado: </label>
+              <%for (var i=0; i < asignaturas.length;i++){%>
+              <% if (asignaturas[i].tipo_asignatura == "Grado") {%>
+              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
+              <label for="asignaturas"><%=asignaturas[i].title%></label>
+              <% } %>
+              <% } %>
+            </div>
+            <div class="form-group" id="solo_master" style="display: none;">
+              <label>Asignaturas de master: </label>
+              <%for (var i=0; i < asignaturas.length;i++){%>
+              <% if (asignaturas[i].tipo_asignatura == "Master") {%>
+              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
+              <label for="asignaturas"><%=asignaturas[i].title%></label>
+              <% } %>
+              <% } %>
+            </div>
+            <div class="form-group" id="solo_doctorado" style="display: none;">
+              <label>Asignaturas de doctorado: </label>
+              <%for (var i=0; i < asignaturas.length;i++){%>
+              <% if (asignaturas[i].tipo_asignatura == "Doctorado") {%>
+              <input type="checkbox" name="asignaturas" value="<%=asignaturas[i]._id%>">
+              <label for="asignaturas"><%=asignaturas[i].title%></label>
+              <% } %>
               <% } %>
             </div>
             <button class="btn btn-secondary" type="submit">Añadir</button>

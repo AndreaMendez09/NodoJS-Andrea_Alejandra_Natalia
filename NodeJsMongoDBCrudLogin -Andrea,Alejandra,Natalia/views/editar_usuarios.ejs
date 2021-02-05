@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
-<div class="container" >
+<div class="container">
     <div class="card">
         <div class="card-body">
             <form action="/usuarios/editar_usuarios/<%= usuario._id %>" method="post">
@@ -35,23 +35,35 @@
                 </div>
                 <% } %>
                 <%if(user.rol == "Administrador" ){%>
-                
                 <div>
                     <label>Rol: </label>
-                    <select name="rol" id="tipo" onchange="alClickar()">
+                    <select name="rol" id="tipo">
                         <option>Administrador</option>
                         <option>Profesor</option>
                         <option>Alumno</option>
                     </select>
 
-                    <script>
-                        function alClickar() {
-                            var rol_usuario = usuario.rol;
-                            alert(rol_usuario);
+                    <script type="text/javascript">
+
+                        function cambiarProfe() {
+                            //var obtengoRol = document.getElementById("tipo").value;
+                            //obtengoRol.setAttribute("selected", "selected");
+                            document.getElementById("tipo").selectedIndex=1;
                         }
+
+                        function cambiarAdmin() {
+                            document.getElementById("tipo").selectedIndex=0;
+                        }
+
+                        function cambiarAlum() {
+                            document.getElementById("tipo").selectedIndex=2;
+                        }
+
+                        window.onload = cambiarAlum();
                     </script>
 
-                    <%if(usuario.rol == "Alumno" ){%>
+
+                    <%if(usuario.rol == "Alumno" ){ %>
                     <label style="margin-left: 50px;">Tipo de curso:</label>
                     <select name="tipo_curso">
                         <option>Grado</option>
