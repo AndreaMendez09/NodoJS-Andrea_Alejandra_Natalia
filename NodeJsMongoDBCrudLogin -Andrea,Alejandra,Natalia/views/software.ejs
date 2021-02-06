@@ -22,8 +22,13 @@
               <input class="form-control" name="url" cols="80"
                 placeholder="Escribe la url" required></textarea>
             </div>
+          
             <button class="btn btn-primary" type="submit">Añadir</button>
           </form>
+          <form action='/software/archivos/<%= asignatura._id %>' method="POST" enctype="multipart/form-data">
+            <input type ="file" name="file">
+            <input type ="submit" value="Subir">
+        </form>
         </div>
       </div>
       <br>
@@ -47,7 +52,17 @@
         <tr>
             <td><%= i + 1%></td>
             <td><%= software[i].description%></td>
-            <td><%=software[i].url%></td>
+            <td>
+              <%if( software[i].url!=""){%>
+                <a href="../files/<%= software[i].url%>" > <%= software[i].url%></a>
+
+                <% } %>  
+                <%if( software[i].archivo!=""){%>
+                 <a href="../files/<%= software[i].archivo%>" download="<%=software[i].archivo%>"> <%= software[i].archivo%></a>
+  
+                <% } %>  
+                 
+            </td>
             <td>
               <a id="eliminar" onclick="pop_up()" href="/software/delete/<%= asignatura._id %>/<%= software[i]._id %>" class="btn btn-danger" >Delete</a>
             </td>
