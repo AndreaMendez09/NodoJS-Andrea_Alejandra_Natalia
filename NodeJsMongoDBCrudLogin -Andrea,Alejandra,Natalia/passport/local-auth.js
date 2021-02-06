@@ -27,6 +27,7 @@ passport.use('local-signup', new LocalStrategy({
     newUser.apellidos = req.body.apellidos;
     newUser.rol = req.body.rol;
     newUser.asignaturas = req.body.asignaturas;
+    newUser.tipo_curso = req.body.tipo_curso;
     newUser.password = newUser.encryptPassword(password);
     await newUser.save();
     done(null, req.user);
