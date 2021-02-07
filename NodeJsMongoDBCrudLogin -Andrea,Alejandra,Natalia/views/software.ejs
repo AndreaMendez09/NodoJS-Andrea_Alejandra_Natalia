@@ -13,22 +13,20 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-          <form action="/software/add/<%= asignatura._id %>" method="post">
+          <form action='/software/<%= asignatura._id %>' method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <input class="form-control" name="description" cols="80"
                 placeholder="Escribe la descripción del software"required>
             </div>
             <div class="form-group">
               <input class="form-control" name="url" cols="80"
-                placeholder="Escribe la url" required></textarea>
+                placeholder="Escribe la url"></textarea>
             </div>
-          
+            <input type ="file" name="archivo">
+            <br>
+            <br>
             <button class="btn btn-primary" type="submit">Añadir</button>
           </form>
-          <form action='/software/archivos/<%= asignatura._id %>' method="POST" enctype="multipart/form-data">
-            <input type ="file" name="file">
-            <input type ="submit" value="Subir">
-        </form>
         </div>
       </div>
       <br>
@@ -54,14 +52,11 @@
             <td><%= software[i].description%></td>
             <td>
               <%if( software[i].url!=""){%>
-                <a href="../files/<%= software[i].url%>" > <%= software[i].url%></a>
-
+                <a href="<%= software[i].url%>" target="_blank"> <%= software[i].url%></a>
                 <% } %>  
                 <%if( software[i].archivo!=""){%>
-                 <a href="../files/<%= software[i].archivo%>" download="<%=software[i].archivo%>"> <%= software[i].archivo%></a>
-  
+                 <a href="../archivos/<%= software[i].archivo%>" download="<%=software[i].archivo%>"> <%= software[i].archivo%></a>
                 <% } %>  
-                 
             </td>
             <td>
               <a id="eliminar" onclick="pop_up()" href="/software/delete/<%= asignatura._id %>/<%= software[i]._id %>" class="btn btn-danger" >Delete</a>

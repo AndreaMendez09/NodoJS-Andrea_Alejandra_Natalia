@@ -8,21 +8,30 @@ router.post('/software/archivos/:id', isAuthenticated, async(req,res) =>{
   console.log("ewrt");
 
   var software = new Software();
-  software.archivo=req.files.file.name;
+  software.archivo=req.files.archivo.name;
   software.asignatura=req.params.id;
+  //software.url=req.body.url;
   await software.save();
   software = await Software.find({asignatura:req.params.id});
   const asignatura = await Asignatura.findById(req.params.id);
 
-  let EDFile = req.files.file
+  let EDFile = req.files.archivo
+  
+  
+  
   EDFile.mv(`./files/${EDFile.name}`,err =>{
     if(err) return res.status(500).send({ message : err})
-    console.log(software);
     res.render('software', { 
       software,asignatura
     }); 
    })
 });
+
+router.get('/archivos/:id',isAuthenticated, async (req, res) => {
+  res.download('./files/' + req.params.id);
+})
+
+
 
 router.get('/software/:id', isAuthenticated, async (req, res, next) => {
   const software = await Software.find({asignatura:req.params.id});

@@ -182,7 +182,7 @@ router.post('/correo_alertas/enviar', isAuthenticated, async (req, res, next) =>
 
   var mailOption = {
     from: 'proyectonode3@gmail.com',
-    to: 'andreisima01@hotmail.com',
+    to: emails,
     subject: informacion.title + " - " + informacion.tipo_peticion,
     text: informacion.cuerpo
 
