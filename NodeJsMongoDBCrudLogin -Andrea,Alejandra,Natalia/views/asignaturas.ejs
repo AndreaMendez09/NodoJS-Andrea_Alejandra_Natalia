@@ -96,10 +96,12 @@
                 <td><%= asignaturas[i].tipo_asignatura%></td>
 
                 <%if(user.rol == "Administrador" || user.rol == "Profesor"){%>
+
+
+
                 <td>
-                  <% var ruta = asignaturas[i]._id.toString %>
                   <a href="/asignaturas/editar_asignaturas/<%= asignaturas[i]._id %>" class="btn btn-secondary">Edit</a>
-                  <a id="eliminar" onclick="pop_up()" href="/asignaturas/delete/<%= asignaturas[i]._id %>" class="btn btn-danger" >Delete</a>
+                  <a id="eliminar" class="btn btn-danger" href="/asignaturas/delete/<%= asignaturas[i]._id%>">Delete</a>
                 </td>
                 <% } %>
                 <% } %>
@@ -114,13 +116,15 @@
   </div>
 
   <script>
-  function pop_up() {
-    var elemento = document.getElementById("eliminar");
-    if (confirm("¿Estas seguro de que quieres eliminar?")) {
-      var hola;
-    } else {
-      elemento.setAttribute("href","/usuarios");
+    function pop_up(ruta) {
+      var elemento = document.getElementById("eliminar");
+      if (confirm("¿Estas seguro de que quieres eliminar?")) {
+        alert("aceptar");
+        elemento.setAttribute("href","/asignaturas/delete/"+ruta);
+      } else {
+        alert("cancelar");
+        elemento.setAttribute("href","/asignaturas");
+      }
     }
-  }
   </script>
 <% include partials/_footer %>
