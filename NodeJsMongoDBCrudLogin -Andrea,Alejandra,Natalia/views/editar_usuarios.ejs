@@ -37,41 +37,36 @@
                 <%if(user.rol == "Administrador" ){%>
                 <div>
                     <label>Rol: </label>
-                    <select name="rol" id="tipo">
-                        <option>Administrador</option>
-                        <option>Profesor</option>
-                        <option>Alumno</option>
+                    <select name="rol" onchange="alCambiar2()"  id="tipo5">
+                        <option value="Administrador">Administrador</option>
+                        <option value="Profesor">Profesor</option>
+                        <option value="Alumno">Alumno</option>
                     </select>
-
-                    <script type="text/javascript">
-
-                        function cambiarProfe() {
-                            //var obtengoRol = document.getElementById("tipo").value;
-                            //obtengoRol.setAttribute("selected", "selected");
-                            document.getElementById("tipo").selectedIndex=1;
-                        }
-
-                        function cambiarAdmin() {
-                            document.getElementById("tipo").selectedIndex=0;
-                        }
-
-                        function cambiarAlum() {
-                            document.getElementById("tipo").selectedIndex=2;
-                        }
-
-                        window.onload = cambiarAlum();
-                    </script>
-
-
-                    <%if(usuario.rol == "Alumno" ){ %>
-                    <label style="margin-left: 50px;">Tipo de curso:</label>
-                    <select name="tipo_curso">
-                        <option>Grado</option>
-                        <option>Master</option>
-                        <option>Doctorado</option>
-                    </select>
-                    <% } %>
                 </div>
+
+                <div id="tipoEstudio2" style="display: none;">
+                    <label>Tipo de curso:</label>
+                    <select name="tipo_curso"  id="selectEstudio2">
+                        <option value="none" selected disabled>Selecciona una opcion</option>
+                        <option value="Grado">Grado</option>
+                        <option value="Master">Master</option>
+                        <option value="Doctorado">Doctorado</option>
+                    </select>
+                </div>
+
+                <script>
+                    function alCambiar2() {
+                        var rol_seleccionado2 = $('#tipo5').val();
+                        alert(rol_seleccionado2);
+                        if (rol_seleccionado2 == "Alumno") {
+                            $("#tipoEstudio2").show();
+                        } else {
+                            $("#tipoEstudio2").hide();
+                        }
+                    }
+                </script>
+
+
 
                 <div class="form-group">
                     <label>Asignaturas: </label>
@@ -100,3 +95,4 @@
         </div>
     </div>
 </div>
+<% include partials/_footer %>
