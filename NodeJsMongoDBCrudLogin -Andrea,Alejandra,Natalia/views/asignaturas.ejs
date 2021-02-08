@@ -72,8 +72,20 @@
           <tbody>
             <% var p = 1; %>
             <% for(var i=0; i < asignaturas.length; i++) { %>
-              <%for (var j=0; j < user.asignaturas.length;j++){%>
-                <%if(user.rol == "Administrador" || asignaturas[i]._id.toString()==user.asignaturas[j].toString()){%>              
+              <% var mostrar=false;%>
+              <% if(user.rol == "Administrador" ){ %>
+                <%  mostrar=true;%>
+
+                <% } else{%>
+                  <%for (var j=0; j < user.asignaturas.length;j++){%>
+                    <%if( asignaturas[i]._id.toString()==user.asignaturas[j].toString()){%>    
+                      <%  mostrar=true;%>
+
+                      <% } %>
+                      <% } %>       
+                  <% } %>
+                  <% if(mostrar==true){ %>
+
               <tr>
                 <td ><%= p++ %></td>
                 <td>
@@ -91,7 +103,7 @@
                 </td>
                 <% } %>
                 <% } %>
-                <% } %>
+               
               </tr>
             <% } %>
           </tbody>
