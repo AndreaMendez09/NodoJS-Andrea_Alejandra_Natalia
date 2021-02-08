@@ -38,7 +38,7 @@ const readCsvFile = async (fileName) => {
           result.map(asig=>{
             var asignaturas = new Asignatura
             asignaturas.title = asig.title;
-            asignaturas.desciption = asig.desciption;
+            asignaturas.description = asig.description;
             asignaturas.info_instalacion = asig.info_instalacion;
             asignaturas.tipo_asignatura = asig.tipo_asignatura;
             asignaturas.save();
