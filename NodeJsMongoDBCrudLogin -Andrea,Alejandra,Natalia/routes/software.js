@@ -4,11 +4,11 @@ const router = express.Router();
 const Asignatura = require('../models/asignaturas');
 const Software = require('../models/software');
 
-router.post('/software/:id', isAuthenticated, async(req,res) =>{
+router.post('/software/archivo/:id', isAuthenticated, async(req,res) =>{
   console.log("ewrt");
 
   var software = new Software();
-  if(software.archivo!=null){
+  if(req.files.archivo!=null){
   software.archivo=req.files.archivo.name;
   }
   software.description=req.body.description;
@@ -17,7 +17,7 @@ router.post('/software/:id', isAuthenticated, async(req,res) =>{
   await software.save();
   software = await Software.find({asignatura:req.params.id});
   const asignatura = await Asignatura.findById(req.params.id);
-  if(software.archivo!=null){
+  if(req.files.archivo!=null){
 
   let EDFile = req.files.archivo
   
