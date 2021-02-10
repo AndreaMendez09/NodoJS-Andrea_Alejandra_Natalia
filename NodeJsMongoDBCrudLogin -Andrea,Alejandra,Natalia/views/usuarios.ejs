@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
-<%if(user.rol == "Administrador"){%>
 <div class="container">
   <div class="row">
     <div class="col-xs-6 col-sm-12 col-md-10">
@@ -219,8 +218,7 @@
             <td>
 
               <a href="/usuarios/editar_usuarios/<%= usuarios[i]._id %>" class="btn btn-secondary">Edit</a>
-              <a id="eliminar" onclick="pop_up()" href="/usuarios/delete/<%= usuarios[i]._id %>"
-                class="btn btn-danger">Delete</a>
+              <a id="eliminar2" class="btn btn-danger" href="/usuarios/delete/<%= usuarios[i]._id %>" >Delete</a>
             </td>
           </tr>
           <% } %>
@@ -230,32 +228,5 @@
     </div>
   </div>
 </div>
-<script language="javascript" type="text/javascript">
-  // Dependiendo del usuario, se mostrará las asignaturas que podrá matricular. Esto lo puede hacer el alumno y el
-  // profesor. El administrador no, ya que se encarga de administrar todo el campus.
-  $(document).ready(function () {
-    $("#tipoEstudio").show();
-    $("#tipo").change(function () {
-      // Si seleccionamos uno de estos dois usuarios, se muestrán las asignaturas
-      if ($('#tipo').val() == "Alumno") {
-        $("#tipoEstudio").show();
-        // En caso contrario, se oculta.
-      } else {
-        $("#tipoEstudio").hide();
-      }
-    });
-  });
 
-  //No va el scrip nose sabe porque
-
-  function pop_up() {
-    var elemento = document.getElementById("eliminar");
-    if (confirm("¿Estas seguro de que quieres eliminar?")) {
-      var hola;
-    } else {
-      elemento.setAttribute("href", "/usuarios");
-    }
-  }
-</script>
-<%}%>
 <% include partials/_footer %>
