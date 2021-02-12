@@ -38,9 +38,21 @@
                 <div>
                     <label>Rol: </label>
                     <select name="rol" onchange="alCambiar2()"  id="tipo5">
+                    <%if(usuario.rol == "Administrador" ){%>
+                        <option value="Administrador" selected>Administrador</option>
+                    <%}else{%>
                         <option value="Administrador">Administrador</option>
+                    <%}%>
+                    <%if(usuario.rol == "Profesor" ){%>
+                        <option value="Profesor" selected>Profesor</option>
+                    <%}else{%>
                         <option value="Profesor">Profesor</option>
+                    <%}%>
+                    <%if(usuario.rol == "Alumno" ){%>
+                        <option value="Alumno" selected>Alumno</option>
+                    <%}else{%>
                         <option value="Alumno">Alumno</option>
+                    <%}%>
                     </select>
                 </div>
 
