@@ -41,33 +41,6 @@ router.post('/addUserCSV', (req, res) => {
     });
 }) ;
 
-// vamos al modelo de usuarios 
-router.get('/usuarios', isAuthenticated,async (req, res, next) => {
-  //Guardamos en una varibale lo que encontramos en usuarios 
-  const usuarios = await Usuario.find();
-  const asignaturas = await Asignatura.find();
-
-  //Imprimimos por consola para ver que los datos existen 
-  console.log(usuarios);
-  //Devolvemos los datos a las vistas 
-  res.render('usuarios', {
-    usuarios, asignaturas
-  });
-});
-
-// vamos al modelo de usuarios 
-router.get('/usuarios', isAuthenticated,async (req, res, next) => {
-  //Guardamos en una varibale lo que encontramos en usuarios 
-  const usuarios = await Usuario.find();
-  const asignaturas = await Asignatura.find();
-
-  //Imprimimos por consola para ver que los datos existen 
-  console.log(usuarios);
-  //Devolvemos los datos a las vistas 
-  res.render('usuarios', {
-    usuarios, asignaturas
-  });
-});
 
 /* vamos al modelo de usuarios */
 router.get('/usuarios', isAuthenticated,async (req, res, next) => {
@@ -104,6 +77,7 @@ router.get('/usuarios/delete/:id',isAuthenticated,async (req, res, next) => {
 });
 
 router.get('/usuarios/editar_usuarios/:id',isAuthenticated, async (req, res, next) => {
+  
   const asignaturas = await Asignatura.find();
   const usuario = await Usuario.findById(req.params.id);
   console.log(usuario);
@@ -112,9 +86,13 @@ router.get('/usuarios/editar_usuarios/:id',isAuthenticated, async (req, res, nex
 
 
 router.post('/usuarios/editar_usuarios/:id', isAuthenticated,async (req, res, next) => {
+  if(req.user.rol=="Administrador"){
   const { id } = req.params;
   await Usuario.update({_id: id}, req.body);
   res.redirect('/usuarios');
+}else{
+  res.redirect('/info_usuarios');
+}
 });
 
 
@@ -151,7 +129,11 @@ router.get('/software', (req, res, next) => {
 });
 
 router.get('/correo_alertas', (req, res, next) => {
+  if(req.user.rol=="Alumno"){
   res.render('correo_alertas');
+}else{
+  res.redirect('/info_usuarios');
+}
 });
 
 //Requerimos el paquete
