@@ -27,13 +27,6 @@
                     <input class="form-control" type="text" name="imagen_perfil"
                         placeholder="Introduce una url con foto" value="<%= usuario.imagen_perfil %>">
                 </div>
-
-                <%if(usuario.correo.toString()==user.correo.toString()){%>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="password"
-                        placeholder="Introduce una nueva contraseña">
-                </div>
-                <% } %>
                 <%if(user.rol == "Administrador" ){%>
                 <div>
                     <label>Rol: </label>
