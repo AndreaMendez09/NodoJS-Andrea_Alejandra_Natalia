@@ -76,7 +76,7 @@ router.post('/software/add/:id',isAuthenticated,async (req, res, next) => {
   var software = new Software(req.body);
   software.asignatura=req.params.id;
   console.log(software);
-  /*Guardamos el usuario */
+  /*Guardamos el software */
   await software.save();
   /*Devolvemos los datos a la vista*/
    software = await Software.find({asignatura:req.params.id});
@@ -89,7 +89,14 @@ router.post('/software/add/:id',isAuthenticated,async (req, res, next) => {
 
 router.get('/software/delete/:idAsignatura/:id',isAuthenticated,async (req, res, next) => {
   let { id } = req.params;
-
+  var softwareeliminar = await Software.findById (id);
+  //console.log(softwareeliminar.archivo);
+  try {
+    fs.unlinkSync('./files/' + softwareeliminar.archivo)
+    console.log('File removed')
+  } catch(err) {
+    console.error('Something wrong happened removing the file', err)
+  }
   await Software.remove({_id: id});
   software = await Software.find({asignatura:req.params.idAsignatura});
   const asignatura = await Asignatura.findById(req.params.idAsignatura);

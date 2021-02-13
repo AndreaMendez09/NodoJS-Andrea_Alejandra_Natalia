@@ -8,6 +8,7 @@ const result=[];
 /*Aca guardamos los datos*/ 
 const Asignatura = require('../models/asignaturas');
 const User = require('../models/usuarios');
+const Software = require('../models/software');
 
 //Email
 //Requerimos el paquete
@@ -116,6 +117,17 @@ var mailOption = {
     }
   });
 // guardar en una variableel email del usuario
+var software = await Software.find({asignatura:id});
+for (var i=0; i < software.length; i++) {
+  console.log(software[i].archivo);
+  try {
+    fs.unlinkSync('./files/' + software[i].archivo)
+    console.log('File removed')
+  } catch(err) {
+    console.error('Something wrong happened removing the file', err)
+  }
+}
+await Software.remove({asignatura:id});
 await Asignatura.remove({_id: id});
 res.redirect('/asignaturas');
 
