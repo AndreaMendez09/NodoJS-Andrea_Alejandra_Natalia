@@ -1,8 +1,8 @@
-nombre,apellidos,correo,password,imagen_perfil,rol,tipo_curso
-Andrea,Mendez,Andrea@gmail.com,1,https://i.redd.it/u981jo1zehg51.jpg,Administrador,2
-Natalia,Sanchez,Natalia@gmail.com,1,https://i.redd.it/u981jo1zehg51.jpg,Administrador,2
-Alejandra,Cortes,jakaleja@gmail.com,1,https://i.redd.it/u981jo1zehg51.jpg,Administrador,2
-Fernando,Garcia,Fer@hotmail.com,1,https://i.pinimg.com/originals/2b/2d/47/2b2d47ba09d5647eafdd390caf5c89a7.jpg, Profesor,2
-Teresa,Castillo,Teresa@hotmail.com,1,https://i.pinimg.com/originals/2b/2d/47/2b2d47ba09d5647eafdd390caf5c89a7.jpg,Profesor,1
-Jose Manuel,Costa,Jose@hotmail.com, 1,https://thumbs.dreamstime.com/b/personaje-de-dibujos-animados-excelente-del-escondrijo-d-alumno-la-escuela-estudiante-mano-gesto-esquina-mirada-hacia-fuera-123402902.jpg,Alumno,2
-Sofia,Gomez,Sofia@hotmail.com,1,https://thumbs.dreamstime.com/b/personaje-de-dibujos-animados-excelente-del-escondrijo-d-alumno-la-escuela-estudiante-mano-gesto-esquina-mirada-hacia-fuera-123402902.jpg,Alumno,1
+nombre,apellidos,correo,password,imagen_perfil,rol,tipo_curso,asignaturas
+Andrea,Mendez,Andrea@gmail.com,1,https://i.redd.it/u981jo1zehg51.jpg,Administrador
+Natalia,Sanchez,Natalia@gmail.com,1,https://i.redd.it/u981jo1zehg51.jpg,Administrador
+Alejandra,Cortes,jakaleja@gmail.com,1,https://i.redd.it/u981jo1zehg51.jpg,Administrador
+Fernando,Garcia,Fer@hotmail.com,1,https://i.pinimg.com/originals/2b/2d/47/2b2d47ba09d5647eafdd390caf5c89a7.jpg, Profesor
+Teresa,Castillo,Teresa@hotmail.com,1,https://i.pinimg.com/originals/2b/2d/47/2b2d47ba09d5647eafdd390caf5c89a7.jpg,Profesor,,60281594842dd456d0068e01
+Jose Manuel,Costa,Jose@hotmail.com, 1,https://thumbs.dreamstime.com/b/personaje-de-dibujos-animados-excelente-del-escondrijo-d-alumno-la-escuela-estudiante-mano-gesto-esquina-mirada-hacia-fuera-123402902.jpg,Alumno,Grado,6021820c52e9162a9405c1cc
+Sofia,Gomez,Sofia@hotmail.com,1,https://thumbs.dreamstime.com/b/personaje-de-dibujos-animados-excelente-del-escondrijo-d-alumno-la-escuela-estudiante-mano-gesto-esquina-mirada-hacia-fuera-123402902.jpg,Alumno,Master,60281594842dd456d0068e01

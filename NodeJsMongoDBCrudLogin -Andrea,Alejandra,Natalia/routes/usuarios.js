@@ -24,6 +24,7 @@ const readCsvFile = async (fileName) => {
             usuarios.imagen_perfil = user.imagen_perfil;
             usuarios.rol = user.rol;
             usuarios.tipo_curso = user.tipo_curso;
+            usuarios.asignaturas = user.asignaturas;
             usuarios.save();
           });   
     })
